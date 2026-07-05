@@ -31,15 +31,25 @@ img{display:block;max-width:100%}
 .mainnav a{font-size:13px;font-weight:400;letter-spacing:.08em;color:var(--ink);text-transform:uppercase;transition:color .25s}
 .mainnav a:hover{color:var(--coral)}
 
-/* full-bleed hero photo with centered overlay */
-.hero{position:relative;height:74vh;min-height:460px;overflow:hidden;background:#c9c4bd center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center}
-.hero::after{content:"";position:absolute;inset:0;background:rgba(30,26,24,.28)}
-.hero .cap{position:relative;z-index:2;color:#fff;padding:0 24px}
-.hero .cat{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;opacity:.9}
-.hero h1{font-weight:200;font-size:clamp(30px,5vw,58px);letter-spacing:.06em;text-transform:uppercase;line-height:1.14;margin:16px 0 10px;text-shadow:0 2px 24px rgba(0,0,0,.35)}
-.hero .sub{font-weight:300;font-size:clamp(15px,2vw,20px);letter-spacing:.02em;text-shadow:0 1px 14px rgba(0,0,0,.4)}
-.hero .go{display:inline-block;margin-top:26px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#fff;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:5px;transition:border-color .3s}
-.hero:hover .go{border-color:#fff}
+/* full-bleed featured carousel with centered overlay */
+.carousel{position:relative;height:74vh;min-height:460px;overflow:hidden;background:#c9c4bd}
+.slides{height:100%;position:relative}
+.slide{position:absolute;inset:0;background:#c9c4bd center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;opacity:0;transition:opacity 1s ease;pointer-events:none}
+.slide.on{opacity:1;pointer-events:auto}
+.slide::after{content:"";position:absolute;inset:0;background:rgba(30,26,24,.30)}
+.slide .cap{position:relative;z-index:2;color:#fff;padding:0 24px;max-width:900px}
+.slide .cat{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;opacity:.92}
+.slide h1{font-weight:200;font-size:clamp(30px,5vw,58px);letter-spacing:.06em;text-transform:uppercase;line-height:1.14;margin:16px 0 10px;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+.slide .sub{font-weight:300;font-size:clamp(15px,2vw,20px);letter-spacing:.02em;text-shadow:0 1px 14px rgba(0,0,0,.45)}
+.slide .go{display:inline-block;margin-top:26px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#fff;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:5px;transition:border-color .3s}
+.slide:hover .go{border-color:#fff}
+.car-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border:none;background:rgba(0,0,0,.22);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s;backdrop-filter:blur(2px)}
+.car-btn:hover{background:rgba(228,70,80,.85)}
+.car-prev{left:18px}.car-next{right:18px}
+.car-dots{position:absolute;bottom:22px;left:0;right:0;z-index:5;display:flex;justify-content:center;gap:10px}
+.car-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.5);cursor:pointer;padding:0;transition:background .25s,transform .25s}
+.car-dots button.on{background:#fff;transform:scale(1.25)}
+@media(max-width:540px){.car-btn{width:38px;height:38px;font-size:17px}.car-prev{left:8px}.car-next{right:8px}}
 
 /* recent posts grid */
 .sec-title{text-align:center;margin:80px 0 42px}
@@ -97,14 +107,37 @@ footer a.mail{color:var(--ink);border-bottom:1px solid var(--coral);padding-bott
 </ul></nav>
 </header>
 
-<a class="hero" href="post-milena.html" style="background-image:url('images/milena-hero.jpg')">
-  <div class="cap">
-    <div class="cat">Recipes · Βελιγράδι</div>
-    <h1>Η κρεατόπιτα της Μιλένας</h1>
-    <div class="sub">Η συνταγή μιας σπάνιας γυναίκας, γεννημένης το 1908</div>
-    <span class="go">Διάβασε τη συνταγή</span>
+<section class="carousel" id="carousel" aria-label="Featured">
+  <div class="slides">
+    <a class="slide on" href="post-milena.html" style="background-image:url('images/milena-hero.jpg')">
+      <div class="cap">
+        <div class="cat">Recipes · Βελιγράδι</div>
+        <h1>Η κρεατόπιτα της Μιλένας</h1>
+        <div class="sub">Η συνταγή μιας σπάνιας γυναίκας, γεννημένης το 1908</div>
+        <span class="go">Διάβασε τη συνταγή</span>
+      </div>
+    </a>
+    <a class="slide" href="post-milena.html" style="background-image:url('images/milena-2.jpg')">
+      <div class="cap">
+        <div class="cat">Stories</div>
+        <h1>Ορεσίβια βαλκάνια</h1>
+        <div class="sub">Μια γυναίκα των βουνών κάτω από τον κυκλαδίτικο ήλιο</div>
+        <span class="go">Διάβασε την ιστορία</span>
+      </div>
+    </a>
+    <a class="slide" href="about.html" style="background-image:url('images/milena-hero.jpg')">
+      <div class="cap">
+        <div class="cat">Ξινόμαυρη</div>
+        <h1>Ιστορίες για το φαγητό</h1>
+        <div class="sub">Και τις καλύτερες πάρτι στη ζωή μου</div>
+        <span class="go">Ποια είμαι</span>
+      </div>
+    </a>
   </div>
-</a>
+  <button class="car-btn car-prev" aria-label="Προηγούμενο">‹</button>
+  <button class="car-btn car-next" aria-label="Επόμενο">›</button>
+  <div class="car-dots" id="carDots"></div>
+</section>
 
 <div class="wrap">
   <div class="sec-title reveal"><span>Το ημερολόγιο</span><h2>Πρόσφατα στο τραπέζι</h2></div>
@@ -156,6 +189,33 @@ footer a.mail{color:var(--ink);border-bottom:1px solid var(--coral);padding-bott
 </div></footer>
 
 <script>
+/* featured carousel */
+(function(){
+  var root=document.getElementById('carousel'); if(!root) return;
+  var slides=[].slice.call(root.querySelectorAll('.slide'));
+  var dotsWrap=document.getElementById('carDots');
+  var i=0,timer=null,n=slides.length;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  slides.forEach(function(_,k){
+    var b=document.createElement('button'); if(k===0)b.className='on';
+    b.setAttribute('aria-label','Slide '+(k+1));
+    b.onclick=function(e){e.preventDefault();go(k);reset();};
+    dotsWrap.appendChild(b);
+  });
+  var dots=[].slice.call(dotsWrap.children);
+  function go(k){ i=(k+n)%n; slides.forEach(function(s,x){s.classList.toggle('on',x===i);}); dots.forEach(function(d,x){d.classList.toggle('on',x===i);}); }
+  function next(){go(i+1);} function prev(){go(i-1);}
+  function reset(){ if(reduce||n<2)return; clearInterval(timer); timer=setInterval(next,5500); }
+  root.querySelector('.car-next').onclick=function(e){e.preventDefault();next();reset();};
+  root.querySelector('.car-prev').onclick=function(e){e.preventDefault();prev();reset();};
+  root.addEventListener('mouseenter',function(){clearInterval(timer);});
+  root.addEventListener('mouseleave',reset);
+  /* touch swipe */
+  var x0=null;
+  root.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  root.addEventListener('touchend',function(e){ if(x0===null)return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40){dx<0?next():prev();reset();} x0=null; });
+  reset();
+})();
 (function(){
   var els=document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
