@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # Builds the full xinomavri.com static mirror from migration/index.json + migration/bodies/*.json
-import json, os, re, html, glob
+import json, os, re, html, glob, hashlib
+
+def _md5(path):
+    try:
+        with open(path,'rb') as fh: return hashlib.md5(fh.read()).hexdigest()
+    except Exception: return None
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, 'site')
@@ -255,8 +260,26 @@ for r in posts:
     b = bodies.get(r['slug'])
     if not b or not b.get('body_html','').strip():
         missing.append(r['slug']); continue
+    # de-duplicate images inside the body (same photo appearing twice)
+    body_html = b['body_html']
+    seen_md5 = set()
+    def _dedup_img(m):
+        src = re.search(r'src="([^"]+)"', m.group(0))
+        if not src: return m.group(0)
+        h = _md5(os.path.join(SITE, src.group(1)))
+        if h and h in seen_md5: return ''      # drop duplicate image
+        if h: seen_md5.add(h)
+        return m.group(0)
+    body_html = re.sub(r'<img\b[^>]*>', _dedup_img, body_html)
+    body_html = re.sub(r'<figure>\s*</figure>', '', body_html)  # clean empties left behind
+
     hero = r.get('hero_local')
-    hero_html = f'<div class="arthero"><img src="{hero}" alt="{esc(r["title"])}"></div>' if hero and os.path.exists(os.path.join(SITE,hero)) else ''
+    hero_html = ''
+    if hero and os.path.exists(os.path.join(SITE,hero)):
+        # only add a top hero if that exact image is NOT already inside the body (avoid duplicate)
+        hero_md5 = _md5(os.path.join(SITE,hero))
+        if hero_md5 not in seen_md5:
+            hero_html = f'<div class="arthero"><img src="{hero}" alt="{esc(r["title"])}"></div>'
     h = head(f"{esc(r['title'])} — Ξινόμαυρη", (r.get('excerpt') or '')[:200], post_href(r['slug']))
     h += mast(r['category'] if r['category'] in CAT_LABEL else '')
     h += f"""<article><div class="wrap narrow">
@@ -264,7 +287,7 @@ for r in posts:
   <h1 class="title">{esc(r['title'])}</h1>
   <div class="byline"><b>xinomavri</b><span>·</span><span>{gr_date(r['date'])}</span></div>
   {hero_html}
-  <div class="body">{b['body_html']}</div>
+  <div class="body">{body_html}</div>
 </div></article>
 <div class="backline"><a href="blog.html">← Όλες οι αναρτήσεις</a></div>
 """
