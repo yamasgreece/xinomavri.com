@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Όλες οι αναρτήσεις — Ξινόμαυρη</title>
+<meta name="description" content="87 ιστορίες για το φαγητό και το κρασί.">
+<link rel="canonical" href="https://xinomavri.com/blog.html">
+<meta property="og:site_name" content="Ξινόμαυρη">
+<meta property="og:locale" content="el_GR">
+<meta property="og:title" content="Όλες οι αναρτήσεις — Ξινόμαυρη">
+<meta property="og:description" content="87 ιστορίες για το φαγητό και το κρασί.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xinomavri.com/blog.html">
+<meta property="og:image" content="https://xinomavri.com/images/heroes/brownies-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xinomavri.com/images/heroes/brownies-1.jpg">
+<meta name="twitter:title" content="Όλες οι αναρτήσεις — Ξινόμαυρη">
+<meta name="twitter:description" content="87 ιστορίες για το φαγητό και το κρασί.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFFFFF;--ink:#2B2B2B;--soft:#8B8B8B;--line:#ECECEC;--coral:#E44650}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Commissioner',Helvetica,Arial,sans-serif;font-weight:300;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+.narrow{max-width:720px}
+.masthead{padding:34px 0 0;text-align:center}
+.masthead .logo{max-width:220px;margin:0 auto}
+.masthead .tagline{margin:16px auto 0;font-weight:200;font-size:15px;letter-spacing:.02em;color:#6f6f6f;max-width:34ch}
+.mainnav{margin-top:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mainnav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:34px;padding:16px 0}
+.mainnav a{font-size:13px;font-weight:400;letter-spacing:.08em;color:var(--ink);text-transform:uppercase;transition:color .25s}
+.mainnav a:hover,.mainnav a.on{color:var(--coral)}
+.carousel{position:relative;height:74vh;min-height:460px;overflow:hidden;background:#c9c4bd}
+.slides{height:100%;position:relative}
+.slide{position:absolute;inset:0;background:#c9c4bd center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;opacity:0;transition:opacity 1s ease;pointer-events:none}
+.slide.on{opacity:1;pointer-events:auto}
+.slide::after{content:"";position:absolute;inset:0;background:rgba(30,26,24,.32)}
+.slide .cap{position:relative;z-index:2;color:#fff;padding:0 24px;max-width:900px}
+.slide .cat{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;opacity:.92}
+.slide h1{font-weight:200;font-size:clamp(30px,5vw,58px);letter-spacing:.06em;text-transform:uppercase;line-height:1.14;margin:16px 0 10px;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+.slide .sub{font-weight:300;font-size:clamp(15px,2vw,20px);letter-spacing:.02em;text-shadow:0 1px 14px rgba(0,0,0,.45)}
+.slide .go{display:inline-block;margin-top:26px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#fff;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:5px;transition:border-color .3s}
+.slide:hover .go{border-color:#fff}
+.car-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border:none;background:rgba(0,0,0,.22);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}
+.car-btn:hover{background:rgba(228,70,80,.85)}
+.car-prev{left:18px}.car-next{right:18px}
+.car-dots{position:absolute;bottom:22px;left:0;right:0;z-index:5;display:flex;justify-content:center;gap:10px}
+.car-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.5);cursor:pointer;padding:0;transition:background .25s,transform .25s}
+.car-dots button.on{background:#fff;transform:scale(1.25)}
+.pagehead{text-align:center;padding:60px 0 8px}
+.pagehead .k{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:500}
+.pagehead h1{font-weight:200;font-size:clamp(32px,5vw,52px);letter-spacing:.02em;margin-top:8px}
+.pagehead p{color:var(--soft);font-size:15px;margin-top:8px}
+.sec-title{text-align:center;margin:74px 0 40px}
+.sec-title span{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:500}
+.sec-title h2{font-weight:200;font-size:32px;letter-spacing:.02em;margin-top:8px}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 34px;margin-top:44px}
+.post{display:block}
+.post .ph{aspect-ratio:3/2;overflow:hidden;background:#EFEDE9;position:relative}
+.post .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.post .ph .noimg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--coral);color:#fff;font-weight:200;font-size:22px;letter-spacing:.05em;padding:16px;text-align:center}
+.post:hover .ph img{transform:scale(1.045)}
+.post .cat{margin-top:16px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:500}
+.post h3{font-weight:400;font-size:20px;line-height:1.3;margin-top:7px}
+.post p{margin-top:8px;color:var(--soft);font-size:14px;font-weight:300;line-height:1.6}
+.post .meta{margin-top:10px;font-size:11.5px;letter-spacing:.03em;color:#b3b3b3}
+.morebtn{text-align:center;margin-top:56px}
+.morebtn a{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:13px 34px;transition:all .25s}
+.morebtn a:hover{background:var(--ink);color:#fff}
+.subscribe{margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:64px 0;text-align:center}
+.subscribe h3{font-weight:200;font-size:26px;letter-spacing:.03em}
+.subscribe p{color:var(--soft);font-size:14px;margin-top:8px}
+.subscribe form{margin:26px auto 0;max-width:440px;display:flex;border:1px solid #d9d9d9}
+.subscribe input{flex:1;border:none;padding:13px 16px;font-family:inherit;font-size:14px;outline:none;background:transparent}
+.subscribe button{border:none;background:var(--coral);color:#fff;font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:0 24px;cursor:pointer}
+article{padding:52px 0 20px}
+.crumb{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);font-weight:500}
+article h1.title{font-weight:200;font-size:clamp(30px,4.6vw,50px);letter-spacing:.01em;line-height:1.12;margin:14px 0 12px}
+.byline{font-size:12.5px;letter-spacing:.04em;color:#a9a9a9;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.byline b{font-weight:500;color:#7d7d7d}
+.arthero{margin:34px 0 8px}
+.arthero img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#EFEDE9}
+.body{font-size:17px;line-height:1.85;color:#333}
+.body p{margin:20px 0}
+.body h2{font-weight:300;font-size:28px;margin:38px 0 6px;color:#222}
+.body h3{font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin:30px 0 10px}
+.body ul,.body ol{margin:16px 0 20px;padding-left:22px}
+.body li{margin:8px 0}
+.body img{width:100%;height:auto;margin:30px 0;background:#EFEDE9}
+.body figure{margin:30px 0}
+.body figcaption{margin-top:8px;font-size:12px;color:var(--soft);text-align:center}
+.backline{border-top:1px solid var(--line);margin-top:64px;padding:30px 0;text-align:center}
+.backline a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.backline a:hover{color:var(--coral)}
+footer{padding:56px 0 64px;text-align:center;border-top:1px solid var(--line);margin-top:80px}
+footer .fl{max-width:150px;margin:0 auto 16px;opacity:.9}
+footer .fnav{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:22px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+footer .cr{margin-top:20px;font-size:12px;color:#b3b3b3}
+footer a.mail{color:var(--ink);border-bottom:1px solid var(--coral);padding-bottom:2px}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:860px){.posts{grid-template-columns:repeat(2,1fr)}.mainnav ul{gap:20px}}
+@media(max-width:540px){.wrap{padding:0 22px}.posts{grid-template-columns:1fr;gap:38px}.mainnav ul{gap:15px;font-size:12px}.carousel{height:64vh}.masthead .logo{max-width:190px}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap">
+  <a href="index.html"><img class="logo" src="images/logo.png" alt="Ξινόμαυρη"></a>
+  <p class="tagline">ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου</p>
+</div>
+<nav class="mainnav"><ul>
+  <li><a href="recipes.html">Recipes</a></li>
+  <li><a href="wine.html">Wine</a></li>
+  <li><a href="stories.html">Stories</a></li>
+  <li><a href="about.html">About</a></li>
+  <li><a href="blog.html" class="on">All Posts</a></li>
+  <li><a href="contact.html">Contact</a></li>
+</ul></nav>
+</header>
+<div class="pagehead"><div class="wrap"><div class="k">Ξινόμαυρη</div><h1>Όλες οι αναρτήσεις</h1><p>87 ιστορίες για το φαγητό και το κρασί.</p></div></div>
+<div class="wrap"><div class="posts" style="margin-top:44px"><a class="post reveal" href="post-brownies-1.html">
+  <div class="ph"><img src="images/heroes/brownies-1.jpg" alt="Μπράουνις με θαλασσινό αλάτι" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Μπράουνις με θαλασσινό αλάτι</h3>
+  <p>Ένα μείγμα, δέκα συνταγές!Υπάρχει ένα μαγικό μείγμα με το οποίο μπορεί κανείς να κάνει τουλάχιστον δέκα γλυκά. Λάβα κέικ, υπερσοκολατένιο κέικ, μπράου</p>
+  <div class="meta">xinomavri · 25 Φεβρουαρίου 2022</div>
+</a><a class="post reveal" href="post-patatoes.html">
+  <div class="ph"><img src="images/heroes/patatoes.jpg" alt="Πατάτες σαν τηγανιτές" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Πατάτες σαν τηγανιτές</h3>
+  <p>Πατάτες στη λαδόκολλαΣυνήθως διαφωνώ με κάθε συνταγή που περιέχει το «σαν». Σαν σαντιγύ, σαν σοκολάτα, σαν μπεσαμέλ κτλ. Αυτό το δόγμα, τελικά δεν ισχ</p>
+  <div class="meta">xinomavri · 13 Φεβρουαρίου 2022</div>
+</a><a class="post reveal" href="post-selinoriza.html">
+  <div class="ph"><img src="images/heroes/selinoriza.jpg" alt="Σελινόριζα αλά πολίτα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Σελινόριζα αλά πολίτα</h3>
+  <p>Xειμωνιάτικο φαγητό, με τρία είδη βολβών, σελινόριζα-πατάτες-καρότα. Αν και οι γεύσεις είναι βαθιά γήινες, μπορεί το φαγητό να γίνει αέρινο και φίνο. </p>
+  <div class="meta">xinomavri · 8 Φεβρουαρίου 2022</div>
+</a><a class="post reveal" href="post-pantzari_salad.html">
+  <div class="ph"><img src="images/heroes/pantzari_salad.jpg" alt="Μίσχοι και παντζαρόφυλλα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Μίσχοι και παντζαρόφυλλα</h3>
+  <p>Βραστή σαλάτα με πορτοκάλιΕίναι χάρμα οφθαλμών. Τόσο οι μίσχοι όσο και τα φύλλα του παντζαριού έχουν πρώτα απ’ όλα εικαστικό ενδιαφέρον. Το σπάνιο σχή</p>
+  <div class="meta">xinomavri · 5 Φεβρουαρίου 2022</div>
+</a><a class="post reveal" href="post-myfatherspie.html">
+  <div class="ph"><img src="images/heroes/myfatherspie.jpg" alt="Η πίτα του πατέρα μου" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Η πίτα του πατέρα μου</h3>
+  <p>Τυρόπιτα με φίλο κρούστας Καθ΄όλη τη διάρκεια των παιδικών μου χρόνων δεν ευτύχισα να φάω κάτι από τα χέρια του πατέρα μου. Αγνοούσα παντελώς ότι ήξερ</p>
+  <div class="meta">xinomavri · 31 Ιανουαρίου 2022</div>
+</a><a class="post reveal" href="post-gigantes.html">
+  <div class="ph"><img src="images/heroes/gigantes.jpg" alt="Φασόλια γίγαντες στο φούρνο" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Φασόλια γίγαντες στο φούρνο</h3>
+  <p>Είναι φαγητό που θέλει παρέα. Δύσκολα το κάνεις για δύο άτομα. Η μισή του επιτυχία είναι η ποιότητα του φασολιού. Αν το φασόλι είναι καλό, τότε το φαγ</p>
+  <div class="meta">xinomavri · 30 Ιανουαρίου 2022</div>
+</a><a class="post reveal" href="post-kolokythopita.html">
+  <div class="ph"><img src="images/heroes/kolokythopita.jpg" alt="Γλυκιά κολοκυθόπιτα με φύλλο κρούστας" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Γλυκιά κολοκυθόπιτα με φύλλο κρούστας</h3>
+  <p>Στριφτή κολοκυθόπιταΚάθε φθινόπωρο εμφανίζονται στην κουζίνα μου πολυάριθμες κολοκύθες. Λίγες από τον κήπο μας και αρκετές, πεσκέσια από φίλους και γν</p>
+  <div class="meta">xinomavri · 23 Ιανουαρίου 2022</div>
+</a><a class="post reveal" href="post-xinomavro.html">
+  <div class="ph"><img src="images/heroes/xinomavro.jpg" alt="Παγκόσμια Ημέρα Ξινόμαυρου" loading="lazy"></div>
+  <div class="cat">Wine</div>
+  <h3>Παγκόσμια Ημέρα Ξινόμαυρου</h3>
+  <p>Η 1η Νοεμβρίου έχει οριστεί ως Παγκόσμια Ημέρα Ξινόμαυρου (International Xinomavro Day). Η ένωση οινοποιών «Οίνοι Βορείου Ελλάδος» αποφάσισε να προχωρ</p>
+  <div class="meta">xinomavri · 31 Οκτωβρίου 2021</div>
+</a><a class="post reveal" href="post-kollyva.html">
+  <div class="ph"><img src="images/heroes/kollyva.jpeg" alt="Κόλλυβα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Κόλλυβα</h3>
+  <p>Το μυστικό για ωραία κόλλυβα βρίσκεται στους άφθονους και φρέσκους ξηρούς καρπούς. Προσθέτω και πολλές μαύρες μικρές σταφίδες και ελαχιστοποιώ τη ζάχα</p>
+  <div class="meta">xinomavri · 13 Οκτωβρίου 2021</div>
+</a><a class="post reveal" href="post-milena_meatpie.html">
+  <div class="ph"><img src="images/heroes/milena_meatpie.jpeg" alt="Η κρεατόπιτα της Μιλένας" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Η κρεατόπιτα της Μιλένας</h3>
+  <p>Κρεατόπιτα από το ΒελιγράδιΕπειδή, όπως φαντάζεστε, η ξινόμαυρη κάνει και διεθνή καριέρα, μετά τη δημοσίευση της Βελιγραδέζας πρασοτυρόπιτας, λάβαμε α</p>
+  <div class="meta">xinomavri · 6 Οκτωβρίου 2021</div>
+</a><a class="post reveal" href="post----------------------.html">
+  <div class="ph"><img src="images/heroes/πασχαλινά-κουλουράκια.jpg" alt="Πασχαλινά κουλουράκια" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Πασχαλινά κουλουράκια</h3>
+  <p>Πορτοκαλένια μοσχοβολιστά κουλουράκιαΕμφανίστηκαν στο σύμπαν του χωριού μου στις αρχές της δεκαετίας του 80. Ένα νεαρό λαμπερό ζευγάρι με δύο υπέροχα </p>
+  <div class="meta">xinomavri · 30 Απριλίου 2021</div>
+</a><a class="post reveal" href="post-easter_eggs2021.html">
+  <div class="ph"><img src="images/heroes/easter_eggs2021.jpg" alt="Πασχαλινά αυγά με φλούδες από κρεμμύδια" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Πασχαλινά αυγά με φλούδες από κρεμμύδια</h3>
+  <p>Δεύτερο Πάσχα υπό συνθήκες καραντίνας, με τους εμβολιασμούς να σηματοδοτούν ένα φως στο βάθος του τούνελ. Βάφουμε και φέτος αυγά, πάντα φυσικά με κρεμ</p>
+  <div class="meta">xinomavri · 27 Απριλίου 2021</div>
+</a><a class="post reveal" href="post-lazarakia_leros.html">
+  <div class="ph"><img src="images/heroes/lazarakia_leros.jpg" alt="Λαζαράκια Λέρου" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Λαζαράκια Λέρου</h3>
+  <p>Την περσινή άνοιξη, εκεί στην αρχή της καραντίνας, είχα δώσει μία συνταγή για λαζαράκια τύπου σταφιδόψωμο, η οποία όμως δεν με ικανοποίησε πλήρως. Φέτ</p>
+  <div class="meta">xinomavri · 19 Απριλίου 2021</div>
+</a><a class="post reveal" href="post-tryfona.html">
+  <div class="ph"><img src="images/heroes/tryfona.jpg" alt="Του Αγίου Τρύφωνα" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Του Αγίου Τρύφωνα</h3>
+  <p>Προστάτη των αμπελουργών Ως ξινόμαυρη, αύριο γιορτάζω λίγο. Γιατί η 1η Φεβρουαρίου είναι η γιορτή του Αγίου Τρύφωνα, προστάτη των αμπελουργών. Η γιορτ</p>
+  <div class="meta">xinomavri · 31 Ιανουαρίου 2021</div>
+</a><a class="post reveal" href="post-lesvos_elies.html">
+  <div class="ph"><img src="images/heroes/lesvos_elies.jpg" alt="Ιστορίες της ελιάς στη Λέσβο" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Ιστορίες της ελιάς στη Λέσβο</h3>
+  <p>Ένα δέντρο και δυο μουσεία Πριν από περίπου δέκα χρόνια, τις εποχές που δεν μπορούσαμε να διανοηθούμε περιορισμούς στις μετακινήσεις μας, βρέθηκα να σ</p>
+  <div class="meta">xinomavri · 26 Ιανουαρίου 2021</div>
+</a><a class="post reveal" href="post-kavourmas.html">
+  <div class="ph"><img src="images/heroes/kavourmas.jpg" alt="Βουβαλίσιος καβουρμάς" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Βουβαλίσιος καβουρμάς</h3>
+  <p>Γεύση από τον Βορά Καβουρμάς, καβουρδίζω ή καβουρντίζω εκ του τούρκικου «kavurmak”, που σημαίνει καβουρδίζω, τσιγαρίζω, ψήνω, παρασκευάζω φαγητό με τη</p>
+  <div class="meta">xinomavri · 16 Ιανουαρίου 2021</div>
+</a><a class="post reveal" href="post-biscuits_butter.html">
+  <div class="ph"><img src="images/heroes/biscuits_butter.jpg" alt="Μπισκοτάκια Βουτύρου" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Μπισκοτάκια Βουτύρου</h3>
+  <p>Για τους καφέδες της καραντίναςΟνειρεύομαι τους καφέδες που θα ‘ρθουν. Αυτές τις άτυπες μικρές συναντήσεις στις οποίες μπορούν να ειπωθούν τα σημαντικ</p>
+  <div class="meta">xinomavri · 12 Ιανουαρίου 2021</div>
+</a><a class="post reveal" href="post-pesto_parsley_almond.html">
+  <div class="ph"><img src="images/heroes/pesto_parsley_almond.jpg" alt="Μίλα μου για πέστο" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Μίλα μου για πέστο</h3>
+  <p>Πέστο μαϊντανού με αμύγδαλα Το πιο διάσημο πέστο του πλανήτη φτιάχνεται με βασιλικό και κουκουνάρι. Μ’ αρέσει μεν, αλλά είμαι οπαδός του πέστο με μαϊν</p>
+  <div class="meta">xinomavri · 11 Ιανουαρίου 2021</div>
+</a><a class="post reveal" href="post-linguine_-cuttlefish.html">
+  <div class="ph"><img src="images/heroes/linguine_-cuttlefish.jpg" alt="Λιγκουίνι με μελάνι σουπιάς" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Λιγκουίνι με μελάνι σουπιάς</h3>
+  <p>Κυριακάτικη μακαρονάδα Ήθελα σήμερα μια μακαρονάδα που να γίνεται εύκολα, αλλά να έχει και κάτι από τις γιορτινές μέρες, που μόλις αφήσαμε πίσω μας. Μ</p>
+  <div class="meta">xinomavri · 10 Ιανουαρίου 2021</div>
+</a><a class="post reveal" href="post-chicken_soup.html">
+  <div class="ph"><img src="images/heroes/chicken_soup.jpg" alt="Κοτόσουπα μεθεόρτια" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Κοτόσουπα μεθεόρτια</h3>
+  <p>Μετά την πολυπλοκότητα, που σχεδόν πάντα εμπεριέχουν τα γιορτινά τραπεζώματα, ακόμη και όταν είναι αυστηρά οικιακά όπως φέτος, πεθυμώ μια απλή κοτόσου</p>
+  <div class="meta">xinomavri · 3 Ιανουαρίου 2021</div>
+</a><a class="post reveal" href="post-new_year2021.html">
+  <div class="ph"><img src="images/heroes/new_year2021.jpg" alt="Καλή Χρονιά" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Καλή Χρονιά</h3>
+  <p>Είναι μία από τις μεγαλύτερες γιορτές όλου του δυτικού κόσμου. Τη στιγμή του μεγαλύτερου σκοταδιού, την ώρα που οι τεράστιες νύχτες του χειμώνα φαίνον</p>
+  <div class="meta">xinomavri · 31 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-vasilopita.html">
+  <div class="ph"><img src="images/heroes/vasilopita.jpg" alt="Τριφτή Βασιλόπιτα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Τριφτή Βασιλόπιτα</h3>
+  <p>Από την ΑνατολήΟι τριφτές βασιλόπιτες, ιδιαίτερα αγαπητές σήμερα σε όλη τη Βόρεια Ελλάδα, αποτελούσαν παράδοση στη Σμύρνη, την Αττάλεια, την Καππαδοκί</p>
+  <div class="meta">xinomavri · 28 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-kourampiedes.html">
+  <div class="ph"><img src="images/heroes/kourampiedes.jpg" alt="Πολίτικοι  κουραμπιέδες" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Πολίτικοι  κουραμπιέδες</h3>
+  <p>Βελούδινοι &amp;amp; Αέρινοι  Είναι η κλασική συνταγή της Βέφας, η οποία σεργιανά στις κουζίνες της οικογένειας εδώ και χρόνια. Μετά από περιπλανήσεις και</p>
+  <div class="meta">xinomavri · 26 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-mpampo_ampa.html">
+  <div class="ph"><img src="images/heroes/mpampo_ampa.jpg" alt="Μία Mπάμπω για την Α, ΜΠΑ" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Μία Mπάμπω για την Α, ΜΠΑ</h3>
+  <p>Είναι πανέξυπνη, ευαίσθητη, ακούραστη. Είναι ένα από τα πιο λαμπερά και ενδιαφέροντα πλάσματα που έχω γνωρίσει, η οποία συνιστά σύμπαν ολόκληρο. Έχω υ</p>
+  <div class="meta">xinomavri · 24 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-loukoumi_orange.html">
+  <div class="ph"><img src="images/heroes/loukoumi_orange.jpg" alt="Λουκούμια πορτοκαλένια" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Λουκούμια πορτοκαλένια</h3>
+  <p>...χωρίς ζελατίνη  Μοσχοβολάνε πορτοκάλι, δεν περιέχουν ίχνος χρώματος, αρώματος ή ζελατίνη. Είναι πεντανόστιμα και αν και χρονοβόρα, η συνταγή δεν έχ</p>
+  <div class="meta">xinomavri · 15 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-perek.html">
+  <div class="ph"><img src="images/heroes/perek.jpg" alt="Φύλλα περέκ" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Φύλλα περέκ</h3>
+  <p>Προϊόν της χρονιάς 2020Τα περέκ, για όλους όσους έχουν προσφυγική καταγωγή, δεν είναι προϊόν, είναι ένα σύμπαν αρμολογημένο από δεκάδες μνήμες. Γιαγιά</p>
+  <div class="meta">xinomavri · 14 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-octapus2.html">
+  <div class="ph"><img src="images/heroes/octapus2.jpg" alt="Χταποδάκι βραστό" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Χταποδάκι βραστό</h3>
+  <p>...και ουχί ξιδάτο Αφορμή για την απλούστατη αυτή συνταγή ήταν ένα μπουκάλι Σαββατιανό που θέλαμε να δοκιμάσουμε. Λόγω κρασιού δεν ήθελα να βάλω ξίδι </p>
+  <div class="meta">xinomavri · 11 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-octapus.html">
+  <div class="ph"><img src="images/heroes/octapus.jpeg" alt="Χταπόδι με μακαρονάκι κοφτό" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Χταπόδι με μακαρονάκι κοφτό</h3>
+  <p>Μετά τη θύελλα αντιδράσεων που προκάλεσε η δήλωσή μου ότι προτιμώ το γριβάδι από τα θαλασσινά ψάρια, για να ισορροπήσουν λίγο τα πράγματα, δίνω τη συν</p>
+  <div class="meta">xinomavri · 7 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-melomakarona.html">
+  <div class="ph"><img src="images/heroes/melomakarona.jpg" alt="Μελομακάρονα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Μελομακάρονα</h3>
+  <p>Για μελομακάρονα τραγανά, με στιβαρό σώμα, τόσο όσο σοροπιασμένα και μαγευτικά αρωματικά. Ακόμα και αν δεν είστε λάτρης αυτού του παραδοσιακού γλυκού,</p>
+  <div class="meta">xinomavri · 6 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-grivadi.html">
+  <div class="ph"><img src="images/heroes/grivadi.jpeg" alt="Γριβάδι Κερκίνης" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Γριβάδι Κερκίνης</h3>
+  <p>Ψάρι στη λαδόκολλα Εμείς οι ορεσίβιοι έχουμε ένα ένοχο γαστρονομικό μυστικό. Αν έρθει η κουβέντα στο θέμα, αποφεύγουμε να πάρουμε θέση και συνεχίζουμε</p>
+  <div class="meta">xinomavri · 5 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-brownies.html">
+  <div class="ph"><img src="images/heroes/brownies.jpeg" alt="Λάβα Κέικ ή σοκολατένια βόμβα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Λάβα Κέικ ή σοκολατένια βόμβα</h3>
+  <p>Πριν από πολλά - πολλά χρόνια, σ’ ένα μάθημα περί υπαρξισμού, έσκασε στη μέση της αίθουσας σαν σοκολατένια βόμβα μία φουντουκόπιτα, όπως την κατονόμασ</p>
+  <div class="meta">xinomavri · 2 Δεκεμβρίου 2020</div>
+</a><a class="post reveal" href="post-editorial_december.html">
+  <div class="ph"><img src="images/heroes/editorial_december.jpg" alt="Ονειρεύομαι ένα καζάνι που βράζει..." loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Ονειρεύομαι ένα καζάνι που βράζει...</h3>
+  <p>...και βγάζει τη ρακή, ανάμεσα σε φωνές και ήχους από κρητική λύρα, αιγαιοπελαγίτικα βιολιά ή βορειοελλαδίτικα χάλκινα Ονειρεύομαι να μαζεύουμε ελιές </p>
+  <div class="meta">xinomavri · 29 Νοεμβρίου 2020</div>
+</a><a class="post reveal" href="post-pate_sokolatas.html">
+  <div class="ph"><img src="images/heroes/pate_sokolatas.jpg" alt="Πατέ Σοκολάτας" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Πατέ Σοκολάτας</h3>
+  <p>Ένας κορμός πιο σοκολατένιοςΘυμόμουν τον κορμό από τα παιδικά μου χρόνια σαν μία ωραία ανάμνηση, αλλά στην ενήλικη μου ζωή δεν μπορούσα να βρω μια συν</p>
+  <div class="meta">xinomavri · 23 Νοεμβρίου 2020</div>
+</a><a class="post reveal" href="post-oliveoil.html">
+  <div class="ph"><img src="images/heroes/oliveoil.jpg" alt="Αρωματικό ελαιόλαδο" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Αρωματικό ελαιόλαδο</h3>
+  <p>Βάση για δεκάδες συνταγέςΜία απλή τεχνική που αποτελεί βάση για δεκάδες μαγειρέματα, πολλά εκ των οποίων είναι ολοκληρωμένα φαγητά, έτοιμα σε 10 με 15</p>
+  <div class="meta">xinomavri · 23 Νοεμβρίου 2020</div>
+</a><a class="post reveal" href="post-___--.html">
+  <div class="ph"><img src="images/heroes/___λα.jpg" alt="Χειμωνιάτικη λαχανιά στα γρήγορα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Χειμωνιάτικη λαχανιά στα γρήγορα</h3>
+  <p>Μια από τις πιο δημοφιλής μου συνταγές είναι ελαφρώς σοταρισμένα λαχανικά σε βαθύ τηγάνι, σε μία βάση αρωματικού ελαιολάδου. Χρησιμοποιώ εποχιακά λαχα</p>
+  <div class="meta">xinomavri · 23 Νοεμβρίου 2020</div>
+</a><a class="post reveal" href="post-goat_aegean.html">
+  <div class="ph"><img src="images/heroes/goat_aegean.jpg" alt="Οι αίγες του Αιγαίου - Βραστή γίδα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Οι αίγες του Αιγαίου - Βραστή γίδα</h3>
+  <p>Υπάρχει μια γοητευτική ετυμολογία που συνδέει το όνομα του Αιγαίου με τις αίγες. Την πρωτοδιάβασα πριν χρόνια σε μία δημοσίευση του σπουδαίου καθηγητή</p>
+  <div class="meta">xinomavri · 22 Νοεμβρίου 2020</div>
+</a><a class="post reveal" href="post-kolokythosoupa.html">
+  <div class="ph"><img src="images/heroes/kolokythosoupa.jpg" alt="Κολοκυθόσουπα βελουτέ" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Κολοκυθόσουπα βελουτέ</h3>
+  <p>Η συνταγή της απλότητας Μία από τις πιο αγαπημένες μου συνταγές του χειμώνα είναι η κολοκυθόσουπα. Την ετοιμάζω πολύ συχνά, και ειδικά όταν έχουμε φιλ</p>
+  <div class="meta">xinomavri · 22 Νοεμβρίου 2020</div>
+</a><a class="post reveal" href="post-prassopita_belgrade.html">
+  <div class="ph"><img src="images/heroes/prassopita_belgrade.jpg" alt="Πρασοτυρόπιτα Βελιγραδέζα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Πρασοτυρόπιτα Βελιγραδέζα</h3>
+  <p>Τις πρώτες μου πίτες τις έκανα αγοράζοντας φύλλα από υπαίθριες λαϊκές αγορές στο Βελιγράδι. Έπαιρνα και ένα λευκό τυρί που το πουλούσαν χύμα μικροί πα</p>
+  <div class="meta">xinomavri · 22 Νοεμβρίου 2020</div>
+</a><a class="post reveal" href="post-soup_yogurt.html">
+  <div class="ph"><img src="images/heroes/soup_yogurt.jpg" alt="Παγωμένη σούπα γιαουρτιού" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Παγωμένη σούπα γιαουρτιού</h3>
+  <p>Η γεύση του καλοκαιριούΑν έπρεπε να διασώσω μία και μόνη συνταγή μου, αυτή θα ήταν η παγωμένη σούπα γιαουρτιού ή αλλιώς ταρατόρ, όπως γνώρισα τη συντα</p>
+  <div class="meta">xinomavri · 18 Ιουνίου 2020</div>
+</a><a class="post reveal" href="post-agegia_dionisos.html">
+  <div class="ph"><img src="images/heroes/agegia_dionisos.jpg" alt="Που έπινε ο Διόνυσος το κρασί του - 2ο Μέρος" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Που έπινε ο Διόνυσος το κρασί του - 2ο Μέρος</h3>
+  <p>Τα αγγεία του κρασιού Στη προηγούμενη ανάρτηση με θέμα τα αγγεία του κρασιού, αναφέρθηκα κατ’ αρχήν στα πιθάρια, τα μεγαλύτερα αγγεία στα οποία αποθήκ</p>
+  <div class="meta">xinomavri · 31 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-towns.html">
+  <div class="ph"><img src="images/heroes/towns.jpg" alt="Η καθησυχαστική ασφάλεια των παρηκμασμένων κωμοπόλεων" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Η καθησυχαστική ασφάλεια των παρηκμασμένων κωμοπόλεων</h3>
+  <p>Μεγάλωσα σ’ ένα χωριό και μέχρι τη στιγμή που έφυγα, αισθανόμουν σαν τον αθλητή που αναμένει τον πυροβολισμό εκκίνησης, για να ξεχυθώ μακριά και να κα</p>
+  <div class="meta">xinomavri · 27 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-mood-of-the-week-18-05.html">
+  <div class="ph"><div class="noimg">Mood of the Week 18.05</div></div>
+  <div class="cat">Mood</div>
+  <h3>Mood of the Week 18.05</h3>
+  <p>100 ΧΡΟΝΙΑΤο Μάιο του 1920, ακριβώς πριν από έναν αιώνα, η Θράκη ενσωματώνεται στον Ελλάδα. Μέσα στις ιδιαιτερότητες των ημερών, αυτή η σημαντική επέτ</p>
+  <div class="meta">xinomavri · 18 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-dionisos_wine.html">
+  <div class="ph"><img src="images/heroes/dionisos_wine.jpg" alt="Πού έπινε ο Διόνυσος το κρασί του - 1ο Μέρος" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Πού έπινε ο Διόνυσος το κρασί του - 1ο Μέρος</h3>
+  <p> Τα αγγεία του κρασιού   Σήμερα 18 Μαΐου είναι η Διεθνής μέρα των Μουσείων. Αν και είναι προφανής η σύνδεση μεταξύ Μουσών και Μουσείων, δεν ξέρω κατά </p>
+  <div class="meta">xinomavri · 18 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-turkey_words4.html">
+  <div class="ph"><img src="images/heroes/turkey_words4.jpg" alt="Τούρκικες λέξεις στο τραπέζι μας, 4ο μέρος" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Τούρκικες λέξεις στο τραπέζι μας, 4ο μέρος</h3>
+  <p>Λάμδα έως μπακαλ Φτάσαμε αισίως και στο τέταρτο μέρος του άρθου για τις τούρκικες λέξεις στο τραπέζι μας (εδώ το πρώτο, δεύτερο, και τρίτο).Για όσους </p>
+  <div class="meta">xinomavri · 17 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-fanouropita.html">
+  <div class="ph"><img src="images/heroes/fanouropita.jpg" alt="Φανουρόπιτα για τα αφανέρωτα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Φανουρόπιτα για τα αφανέρωτα</h3>
+  <p>...φανέρωσον πρόσωπον ποθητόν  Κατ’ αρχήν θέλω να πω ότι στην Βόρεια Ελλάδα, τα χρόνια που μεγάλωσα εγώ τουλάχιστον, δεν την ξέραμε τη φανουρόπιτα. Πρ</p>
+  <div class="meta">xinomavri · 12 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-mood-of-the-day-weareback.html">
+  <div class="ph"><div class="noimg">Mood of the Day: Επιστρέφουμε</div></div>
+  <div class="cat">Mood</div>
+  <h3>Mood of the Day: Επιστρέφουμε</h3>
+  <p>ΕΠΙΣΤΡΕΦΟΥΜΕΚαι δίνουμε ραντεβού στο ίδιο τραπέζι με ασφάλεια. Δεκάδες γνωστοί επαγγελματίες σεφ, ενώνουν τις φωνές τους σ’ ένα όμορφο βίντεο και δηλώ</p>
+  <div class="meta">xinomavri · 11 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-giaourti.html">
+  <div class="ph"><img src="images/heroes/giaourti.jpg" alt="Γιαούρτι από σπίτι" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Γιαούρτι από σπίτι</h3>
+  <p>Απλό σπιτικό γιαούρτι&amp;#010;&amp;#010;Άργησα πολύ να δοκιμάσω να κάνω σπιτικό γιαούρτι, παρ’ όλο που είχα εικόνες και μνήμες από το πατρικό μου. Τελικά ότα</p>
+  <div class="meta">xinomavri · 11 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-moof-of-the-week-09-05-20.html">
+  <div class="ph"><img src="images/heroes/moof-of-the-week-09-05-20.jpg" alt="Moof of the Week 09.05.20" loading="lazy"></div>
+  <div class="cat">Mood</div>
+  <h3>Moof of the Week 09.05.20</h3>
+  <p>SUPPORTΠερισσότεροι από 200 εργαζόμενοι από τους κλάδους της Τέχνης και του Πολιτισμού συγκεντρώθηκαν στη Διονυσίου Αρεοπαγίτου, κάτω από τον Παρθενών</p>
+  <div class="meta">xinomavri · 9 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-almonds_mirabello.html">
+  <div class="ph"><img src="images/heroes/almonds_mirabello.jpg" alt="Μεραμπελλιώτικα αμύγδαλα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Μεραμπελλιώτικα αμύγδαλα</h3>
+  <p>Αμύγδαλα με ντομάταΜε αφορμή το χθεσινό δημοσίευμα για το Κορφάρι των Αμυγδαλιών στη Νάξο, μία κρητικιά φίλη, μου θύμισε τον σημαντικό ρόλο των αμυγδά</p>
+  <div class="meta">xinomavri · 8 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-mygdala_voglis.html">
+  <div class="ph"><img src="images/heroes/mygdala_voglis.jpg" alt="Τα μύγδαλα, ο Βόγλης και το Κορφάρι των Αμυγδαλιών" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Τα μύγδαλα, ο Βόγλης και το Κορφάρι των Αμυγδαλιών</h3>
+  <p>Ένα από τα δέντρα που καρποφορούσαν από την αρχαιότητα στη Νάξο ήταν οι αμυγδαλιές. Ο Αθήναιος που έζησε μεταξύ 2-3 αιώνα μ.χ. και έγραψε τους Δειπνοσ</p>
+  <div class="meta">xinomavri · 7 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-cake_lemon_orange.html">
+  <div class="ph"><img src="images/heroes/cake_lemon_orange.jpg" alt="Κέικ με εσπεριδοειδή" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Κέικ με εσπεριδοειδή</h3>
+  <p>Η Νάξος είναι ένας παράδεισος για τα εσπεριδοειδή. Λεμόνια, πορτοκάλια, μανταρίνια, κουμ κουάτ, περγαμόντα, γκρέιπ φρουτ. Cake με φρούτα</p>
+  <div class="meta">xinomavri · 2 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-mood-of-the-day-02-05-20.html">
+  <div class="ph"><div class="noimg">Mood of the Day 02.05.20</div></div>
+  <div class="cat">Mood</div>
+  <h3>Mood of the Day 02.05.20</h3>
+  <p>Επίκουρος &amp;#010;&amp;#010;Η Εθνική Βιβλιοθήκη δανείζει ηλεκτρονικά βιβλία. Μπείτε στο site της και απολαύστε δωρεάν μία τεράστια γκάμα βιβλίων. Λόγω καραν</p>
+  <div class="meta">xinomavri · 2 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-may_first.html">
+  <div class="ph"><img src="images/heroes/may_first.jpg" alt="Παράξενη Πρωτομαγιά" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Παράξενη Πρωτομαγιά</h3>
+  <p>Μαγιάτικες μουσικές και παροιμίες Ο Μάιος είναι από τους πιο πολυτραγουδισμένους μήνες του χρόνου, νομίζω ότι εύκολα μπορούμε να εντοπίσουμε τριάντα έ</p>
+  <div class="meta">xinomavri · 1 Μαΐου 2020</div>
+</a><a class="post reveal" href="post-turkey_words3.html">
+  <div class="ph"><img src="images/heroes/turkey_words3.jpg" alt="Τούρκικες λέξεις στο τραπέζι μας 3ο μέρος" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Τούρκικες λέξεις στο τραπέζι μας 3ο μέρος</h3>
+  <p>Τούρκικες λέξεις, καπάκι, καπαμάς, καρπούζι, κασέρι, κατιμέρι, κατιφές, καφές, καφενείο, καφενές, καφετζής, κεμπάπ, κεσές,κεσκέκι, κεσκέκ, κισκέκι, κι</p>
+  <div class="meta">xinomavri · 30 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-------------20--------.html">
+  <div class="ph"><img src="images/heroes/αμπέλια-του-20ου-αιώνα.jpg" alt="Αμπέλια του 20ου αιώνα" loading="lazy"></div>
+  <div class="cat">Uncorked</div>
+  <h3>Αμπέλια του 20ου αιώνα</h3>
+  <p>&amp;#010;Πρόσφυγες από την Ανατολική Θράκη, που άρχισαν να καταφτάνουν στη Μακεδονία ήδη από το 1915, έφεραν μαζί τους κλίματα τυλιγμένα σε βρεγμένες κου</p>
+  <div class="meta">xinomavri · 30 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-----------------------.html">
+  <div class="ph"><img src="images/heroes/οι-γέφυρες-του-κρασιού.jpg" alt="Οι Γέφυρες του Κρασιού" loading="lazy"></div>
+  <div class="cat">Uncorked</div>
+  <h3>Οι Γέφυρες του Κρασιού</h3>
+  <p>&amp;#010;Τον Οκτώβριο του 1912, οι κάτοικοι της Χαλάστρας, δυτικά της Θεσσαλονίκης, έριξαν στον Αξιό ποταμό τεράστια ξύλινα κρασοβάρελα για να δημιουργηθ</p>
+  <div class="meta">xinomavri · 29 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-turkey_words.html">
+  <div class="ph"><img src="images/heroes/turkey_words.jpg" alt="Τούρκικες λέξεις στο τραπέζι μας 2ο μέρος" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Τούρκικες λέξεις στο τραπέζι μας 2ο μέρος</h3>
+  <p> Κάπα έως Καν Συνεχίζω σήμερα το 2ο μέρος του άρθρου με τις τούρκικες λέξεις (εδώ το 1ο) που σχετίζονται με το τραπέζι μας. Προϊόντα, μαγειρικές, σκεύ</p>
+  <div class="meta">xinomavri · 28 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-makarina.html">
+  <div class="ph"><img src="images/heroes/makarina.jpg" alt="Ποντιακό ζυμαρικό με κινέζικο αέρα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Ποντιακό ζυμαρικό με κινέζικο αέρα</h3>
+  <p>Μακαρίνα σε ρόλο νουντλ  Η μακαρίνα είναι ένα ποντιακό ζυμαρικό, αρκετά γνωστό κυρίως στη Βόρεια Ελλάδα. Η σωστή μακαρίνα είναι λεπτή και αέρινη, λίγο</p>
+  <div class="meta">xinomavri · 28 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-mood24_4.html">
+  <div class="ph"><div class="noimg">Mood 24.04</div></div>
+  <div class="cat">Mood</div>
+  <h3>Mood 24.04</h3>
+  <p>&amp;#010;ΖΩΗΣε τι θεό πίστευαν οι αρχαίοι Κυκλαδίτες; Τι έτρωγαν οι κάτοικοι της Σύρου 5000 χρόνια πριν. Πως αποχαιρετούσαν τους νεκρούς τους στη Μήλο; Π</p>
+  <div class="meta">xinomavri · 24 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-george.html">
+  <div class="ph"><img src="images/heroes/george.jpg" alt="Ανήμερα του αγιωργίτικου" loading="lazy"></div>
+  <div class="cat">Wine</div>
+  <h3>Ανήμερα του αγιωργίτικου</h3>
+  <p>Το κρασί της Νεμέας  Αν η πρώτη μου ανάρτηση για το κρασί, ως ξινόμαυρη, ήταν αφιερωμένη δικαιωματικά στο ξινόμαυρο, η δεύτερη ανάρτηση λογικά πρέπει </p>
+  <div class="meta">xinomavri · 23 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-egreekwine4.html">
+  <div class="ph"><img src="images/heroes/egreekwine4.jpg" alt="Τα κρασιά της Ηπείρου και των Επτανήσων" loading="lazy"></div>
+  <div class="cat">Wine</div>
+  <h3>Τα κρασιά της Ηπείρου και των Επτανήσων</h3>
+  <p>Ήπειρος &amp;amp; Ιόνια Νησιά Το 4ο επεισόδιο από τα εκπαιδευτικά βίντεο του Συνδέσμου Ελληνικού Οίνου και του Κωνσταντίνου Λαζαράκη είναι στον αέρα και ε</p>
+  <div class="meta">xinomavri · 21 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-zagori_alevropita.html">
+  <div class="ph"><img src="images/heroes/zagori_alevropita.jpg" alt="Αλευρόπιτα Ζαγορίου" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Αλευρόπιτα Ζαγορίου</h3>
+  <p>Το φαστ φουντ της ΗπείρουΗ συνταγή έφτασε στην οικογενειακή κουζίνα από την αδελφή μου, στα μέσα της δεκαετίας του ’90, μετά από ένα, καθοριστικό για </p>
+  <div class="meta">xinomavri · 21 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-kafenio.html">
+  <div class="ph"><img src="images/heroes/kafenio.jpg" alt="Τα καφενεία όλα κλειστά" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Τα καφενεία όλα κλειστά</h3>
+  <p>Η μυθολογία που κουβαλούν τα καφενεία και η ατμόσφαιρά τους είναι θέμα ατελείωτο. Τώρα που όλα είναι κλειστά, η νοσταλγία γι’ αυτούς τους τόπους συνάθ</p>
+  <div class="meta">xinomavri · 20 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-patoudo.html">
+  <div class="ph"><img src="images/heroes/patoudo.jpg" alt="Πάτουδο, Αρνί με ρύζι και χόρτα στα φούρνο" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Πάτουδο, Αρνί με ρύζι και χόρτα στα φούρνο</h3>
+  <p>Πάτουδο καραντίνας Στη Νάξο το αρνί του Πάσχα είναι γεμιστό και φέρει το σπάνιο όνομα “πάτουδο”. Η γέμιση του αποτελείται από χόρτα, άφθονες σταφίδες </p>
+  <div class="meta">xinomavri · 19 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-easter.html">
+  <div class="ph"><img src="images/heroes/easter.jpg" alt="Πασχαλινό Τραπέζι" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Πασχαλινό Τραπέζι</h3>
+  <p>Πασχαλινό Τραπέζι. Στη θέση των κόκκινων αυγών μπήκε η αίσθηση ότι κανείς δεν σώζεται μόνος, ότι η αλληλεγγύη είναι ζωογόνα.</p>
+  <div class="meta">xinomavri · 16 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-_eggs.html">
+  <div class="ph"><img src="images/heroes/_eggs.jpg" alt="Βαμμένα κόκκινα αυγά" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Βαμμένα κόκκινα αυγά</h3>
+  <p>κόκκινα αυγά, Πάσχα, Βάψιμο αυγών, βάφω αυγά, αυγά με κρεμμύδια, τσόφλια από κρεμμύδια, βάψιμο αυγών με τσόφλια κρεμμυδιών τα πιό ωραία πασχαλινά αυγα</p>
+  <div class="meta">xinomavri · 15 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-egreekwine2.html">
+  <div class="ph"><img src="images/heroes/egreekwine2.jpg" alt="eGreekWine No 2" loading="lazy"></div>
+  <div class="cat">Wine</div>
+  <h3>eGreekWine No 2</h3>
+  <p>Θράκη &amp;amp; Ανατολική ΜακεδονίαΌπως είπαμε και στην προηγούμενη ανάρτηση τα βίντεο του Συνδέσμου Ελληνικού Οίνου (ΣΕΟ) και του Κωνσταντίνου Λαζαράκη, </p>
+  <div class="meta">xinomavri · 13 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-egreekwine3.html">
+  <div class="ph"><img src="images/heroes/egreekwine3.jpg" alt="eGreekWine No3" loading="lazy"></div>
+  <div class="cat">Wine</div>
+  <h3>eGreekWine No3</h3>
+  <p>Ξινόμαυρο LandΓια να μην επαναλαμβάνομαι και ξαναγράφω την ίδια εισαγωγή, όσοι δεν διαβάσατε το eGreekWine 1 και το eGreekWine 2, πατήστε στα αντίστοι</p>
+  <div class="meta">xinomavri · 13 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-egreekwine1.html">
+  <div class="ph"><img src="images/heroes/egreekwine1.jpg" alt="eGreekWine No1" loading="lazy"></div>
+  <div class="cat">Wine</div>
+  <h3>eGreekWine No1</h3>
+  <p>Όλα όσα θέλεις να μάθεις για το ελληνικό κρασί.Μία σειρά από σύντομα και μεστά εκπαιδευτικά βίντεο για τον ελληνικό κρασί και τον ελληνικό αμπελώνα απ</p>
+  <div class="meta">xinomavri · 13 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-merkouri.html">
+  <div class="ph"><img src="images/heroes/merkouri.jpeg" alt="Ο έρωτας γεννήθηκε στο Νότο" loading="lazy"></div>
+  <div class="cat">Wine</div>
+  <h3>Ο έρωτας γεννήθηκε στο Νότο</h3>
+  <p>&amp;#010;Κτήμα Μερκούρη στην Ηλεία&amp;#010;&amp;#010;Αν και ξινόμαυρη, ο έρωτας μου για το κρασί με χτύπησε κατακούτελα σε Πελοποννησιακό έδαφος και κάπως όψιμα</p>
+  <div class="meta">xinomavri · 11 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-bakaliaros.html">
+  <div class="ph"><img src="images/heroes/bakaliaros.jpeg" alt="Μπακαλιάρος με αγκινάρες και αρακά" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Μπακαλιάρος με αγκινάρες και αρακά</h3>
+  <p>Σε πείσμα όλων όσων συμβαίνουν, οι άνοιξη είναι εδώ. Κάνουμε μία (απέλπιδη;) προσπάθεια να τη φέρουμε στο τραπέζι με μια ανοιξιάτικη συνταγή κατσαρόλα</p>
+  <div class="meta">xinomavri · 11 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-sarakosti.html">
+  <div class="ph"><img src="images/heroes/sarakosti.jpeg" alt="Τελετουργικοί άρτοι" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Τελετουργικοί άρτοι</h3>
+  <p>Το ψωμί στον κύκλο της ζωής και του χρόνου Η Κυρά Σαρακοστή φτιαγμένη από τα μέλη του Μουσείου Ψωμιού στο Βαρνάβα Αττικής / φωτό: ξινόμαυρη Πλησιάζοντ</p>
+  <div class="meta">xinomavri · 9 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-wisefoodstories.html">
+  <div class="ph"><img src="images/heroes/wisefoodstories.jpg" alt="Ηρωικό Φαγητό" loading="lazy"></div>
+  <div class="cat">Mood</div>
+  <h3>Ηρωικό Φαγητό</h3>
+  <p>Τα εστιατόρια Cookoovaya, Basegrill και Travolta, θα μαγειρεύουν 3 φορές την εβδομάδα για να παρέχουν γεύματα σε γιατρούς και νοσηλευτές των νοσοκομεί</p>
+  <div class="meta">xinomavri · 8 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-lazarakia.html">
+  <div class="ph"><img src="images/heroes/lazarakia.jpeg" alt="Για την Ανάσταση του Λαζάρου" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Για την Ανάσταση του Λαζάρου</h3>
+  <p> Λαζαράκια  Τα λαογραφικάΤα λαζαράκια είναι μικρά ψωμάκια – σταφιδόψωμα - κουλουράκια (ανάλογα την περιοχή) νηστίσιμα, τα οποία φτιάχνονταν το Σάββατο</p>
+  <div class="meta">xinomavri · 8 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-goulandri_museum.html">
+  <div class="ph"><img src="images/heroes/goulandri_museum.jpg" alt="Mood 06.04" loading="lazy"></div>
+  <div class="cat">Mood</div>
+  <h3>Mood 06.04</h3>
+  <p>ΕΙΚΑΣΤΙΚΗ ΕΠΙΒΙΩΣΗΤο Μουσείο του Ιδρύματος Βασίλη &amp;amp; Ελίζας Γουλανδρή, που επιτέλους βρήκε στέγη στην ζωντανή γειτονιά του Παγκρατίου, δίνει τη δυν</p>
+  <div class="meta">xinomavri · 6 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-mood-05-04-20.html">
+  <div class="ph"><img src="images/heroes/mood-05-04-20.jpg" alt="Mood 05.04.20" loading="lazy"></div>
+  <div class="cat">Mood</div>
+  <h3>Mood 05.04.20</h3>
+  <p>Hotel EterniteΣήμερα Κυριακή στις 9 το βράδυ, η παράσταση του Εθνικού Θεάτρου Hotel Éternité του Γιάννη Καλαβριανού. Ένα έργο για τον Χρόνο. Άνθρωποι </p>
+  <div class="meta">xinomavri · 5 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-friedeggs.html">
+  <div class="ph"><img src="images/heroes/friedeggs.jpg" alt="Για τα μάτια σου μόνο" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Για τα μάτια σου μόνο</h3>
+  <p>Αυγά μάτια &amp;#010;2 φρέσκα βιολογικά αυγά&amp;#010;1 κουταλιά έξτρα παρθένο ελαιόλαδο &amp;#010;λίγο θαλασσινό αλάτι&amp;#010;φρεσκοτριμένο πιπέρι&amp;#010;&amp;#010;Ζεστα</p>
+  <div class="meta">xinomavri · 5 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-onions.html">
+  <div class="ph"><img src="images/heroes/onions.jpg" alt="Κρεμμυδότσουφλα" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Κρεμμυδότσουφλα</h3>
+  <p>Για τα κόκκινα αυγά &amp;#010;&amp;#010;Σε λίγες μέρες, βάφουμε αυγά. Εδώ, τα βάψαμε ήδη. Δείτε τον τρόπο. Να έχουμε το νου μας να μαζέψουμε κρεμμυδότσουφλα α</p>
+  <div class="meta">xinomavri · 5 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-mood2.html">
+  <div class="ph"><div class="noimg">Mood 04.04.20</div></div>
+  <div class="cat">Mood</div>
+  <h3>Mood 04.04.20</h3>
+  <p>Ελπίδα&amp;#010;&amp;#010;Η ελπίδα, σύμφωνα με τον Ερνστ Μπλοχ, είναι πάντοτε επαναστατική, επειδή αρνείται να αποδεχθεί ότι το παρόν (μία υπαρξιακή κατάσταση</p>
+  <div class="meta">xinomavri · 4 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-glezos.html">
+  <div class="ph"><img src="images/heroes/glezos.jpg" alt="Ένα καλάθι για έναν σπουδαίο άνθρωπο" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Ένα καλάθι για έναν σπουδαίο άνθρωπο</h3>
+  <p>Στη μνήμη του Μανώλη Γλέζου (1922 - 2020)&amp;#010;Πριν από λίγα χρόνια παραβρέθηκα στην Απείρανθο, το χωριό του Μανώλη Γλέζου, σε μία κηδεία, ενός ηλικιω</p>
+  <div class="meta">xinomavri · 4 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-words_turkey.html">
+  <div class="ph"><img src="images/heroes/words_turkey.jpg" alt="Τούρκικες λέξεις στο τραπέζι μας 1ο Μέρος, Α έως Ι" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>Τούρκικες λέξεις στο τραπέζι μας 1ο Μέρος, Α έως Ι</h3>
+  <p>Με τους Τούρκους είμαστε μια γειτονιά από την εποχή του Βυζαντίου, που έκαναν την εμφάνισή τους, στα όρια της βυζαντινής αυτοκρατορίας, ως νομαδικά φύ</p>
+  <div class="meta">xinomavri · 3 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-giouvetsi.html">
+  <div class="ph"><img src="images/heroes/giouvetsi.jpg" alt="Το γιουβέτσι της ξαδέλφης" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Το γιουβέτσι της ξαδέλφης</h3>
+  <p>Αφιερωμένο σ’ αυτούς που μαγειρεύουν κάθε μέραΈχω μία ξαδέρφη, η αγαπημένη μου, η οποία αν υπήρχε δικαιοσύνη στον πλανήτη θα έπρεπε κουζινικά να έχει </p>
+  <div class="meta">xinomavri · 1 Απριλίου 2020</div>
+</a><a class="post reveal" href="post-------------------------------.html">
+  <div class="ph"><img src="images/heroes/η-αλμυρή-τούρτα-της-καραντίνας.jpg" alt="Η αλμυρή τούρτα της καραντίνας" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Η αλμυρή τούρτα της καραντίνας</h3>
+  <p>Μια εύκολη συνταγή, που μπορεί να γίνει με προϊόντα που έχουμε στοκαρισμένα στο σπίτι. Χρειαζόμαστε μόνο πλιγούρι και γιαούρτι. Αν υπάρχουν λίγα λαχαν</p>
+  <div class="meta">xinomavri · 31 Μαρτίου 2020</div>
+</a><a class="post reveal" href="post---------------------.html">
+  <div class="ph"><img src="images/heroes/χαλβάς-σιμιγδαλένιος.jpg" alt="Χαλβάς σιμιγδαλένιος" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Χαλβάς σιμιγδαλένιος</h3>
+  <p>Επιστροφή στα βασικά. Ακόμη και για τους αρχάριους, αλλά πάντα εξαιρετικό και για τους ειδήμονες.Εύκολο, γρήγορο, απλό. Ένα γλυκό που έχει γίνει σε φο</p>
+  <div class="meta">xinomavri · 30 Μαρτίου 2020</div>
+</a><a class="post reveal" href="post-mood-01-04-20.html">
+  <div class="ph"><div class="noimg">Mood 01.04.20</div></div>
+  <div class="cat">Mood</div>
+  <h3>Mood 01.04.20</h3>
+  <p>ΜΙΛΑΜΕ&amp;#010;Ερημώνουν οι δρόμοι, να μην ερημώσουν και οι ζωές μας. Μία πρωτοβουλία του Σταύρου Θεοδωράκη και της ομάδας τού pod.gr. Αν γνωρίζετε κάποι</p>
+  <div class="meta">xinomavri · 24 Μαρτίου 2020</div>
+</a><a class="post reveal" href="post-------------.html">
+  <div class="ph"><img src="images/heroes/ολα-εκλεισαν.jpg" alt="ΟΛΑ ΕΚΛΕΙΣΑΝ" loading="lazy"></div>
+  <div class="cat">Stories</div>
+  <h3>ΟΛΑ ΕΚΛΕΙΣΑΝ</h3>
+  <p>Τα εστιατόρια που μας ταΐσανε ζεστό φαγητό, τα καφέ μέσα στα οποία κουρνιάσαμε δύσκολες μέρες, κλείσαμε δουλειές και δώσαμε τα χέρια μας, για συμφωνίε</p>
+  <div class="meta">xinomavri · 24 Μαρτίου 2020</div>
+</a><a class="post reveal" href="post------------------.html">
+  <div class="ph"><img src="images/heroes/κατάφυτες-πλαγιές.jpg" alt="Λάχανο τουρσί της αδερφής μου" loading="lazy"></div>
+  <div class="cat">Recipes</div>
+  <h3>Λάχανο τουρσί της αδερφής μου</h3>
+  <p>Τελειομανής και πείσμων, ταλαντούχα, αφόρητα γοητευτική και λαμπρό μυαλό. Αν δεν ήταν αυτή δεν θα έτρωγα όπως τρώω, δεν θα μαγείρευα όπως μαγειρεύω, κ</p>
+  <div class="meta">xinomavri · 23 Μαρτίου 2020</div>
+</a></div></div>
+<footer><div class="wrap">
+  <img class="fl" src="images/logo.png" alt="Ξινόμαυρη">
+  <ul class="fnav">
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="wine.html">Wine</a></li>
+    <li><a href="stories.html">Stories</a></li>
+    <li><a href="mood.html">Mood</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p class="cr">© Ξινόμαυρη · <a class="mail" href="mailto:xinomavri@gmail.com">xinomavri@gmail.com</a></p>
+</div></footer>
+<script>
+(function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.08});
+els.forEach(function(e){io.observe(e);});})();
+</script>
+</body></html>
