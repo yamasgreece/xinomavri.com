@@ -4,157 +4,162 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index,follow">
-<title>Ξινόμαυρη — κουζίνα, κρασί και ιστορίες</title>
-<meta name="description" content="Ξινόμαυρη: συνταγές, κρασί και ιστορίες από ένα τραπέζι κάτω από τον κυκλαδίτικο ήλιο. Δεν είμαστε ό,τι τρώμε· είμαστε όλα όσα ζήσαμε.">
+<title>Ξινόμαυρη — ιστορίες για το φαγητό</title>
+<meta name="description" content="Ξινόμαυρη: ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου. Συνταγές, κρασί και ιστορίες από ένα τραπέζι κάτω από τον κυκλαδίτικο ήλιο.">
 <link rel="canonical" href="https://xinomavri.com/">
 <meta property="og:title" content="Ξινόμαυρη">
-<meta property="og:description" content="Κουζίνα, κρασί και ιστορίες από ένα τραπέζι κάτω από τον κυκλαδίτικο ήλιο.">
+<meta property="og:description" content="Ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#FFFFFF;--ink:#141312;--soft:#8C8881;--line:#ECEAE5;--wine:#8E1C2B}
+:root{--paper:#FFFFFF;--ink:#2B2B2B;--soft:#8B8B8B;--line:#ECECEC;--coral:#E44650}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
-.serif{font-family:'Cormorant Garamond',Georgia,serif}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',Helvetica,Arial,sans-serif;font-weight:300;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
-.label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--soft)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
 
-header.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
-.brand{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;letter-spacing:.02em}
-.brand .dot{color:var(--wine)}
-.nav-links{display:flex;gap:30px}
-.nav-links a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);transition:color .3s}
-.nav-links a:hover{color:var(--ink)}
+/* centered masthead, faithful to the Wix site */
+.masthead{padding:34px 0 0;text-align:center}
+.masthead .logo{max-width:230px;margin:0 auto}
+.masthead .tagline{margin:16px auto 0;font-weight:200;font-size:15px;letter-spacing:.02em;color:#6f6f6f;max-width:34ch}
+.mainnav{margin-top:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mainnav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:34px;padding:16px 0}
+.mainnav a{font-size:13px;font-weight:400;letter-spacing:.08em;color:var(--ink);text-transform:uppercase;transition:color .25s}
+.mainnav a:hover{color:var(--coral)}
 
-.hero{padding:118px 0 84px}
-.hero .label{margin-bottom:30px}
-.hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(44px,7vw,92px);line-height:1.02;letter-spacing:-.01em;max-width:15ch}
-.hero h1 em{font-style:italic;color:var(--wine)}
-.hero .sub{margin-top:34px;max-width:52ch;color:var(--soft);font-size:18px;font-weight:300;line-height:1.6}
-.hero .by{margin-top:38px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
+/* full-bleed hero photo with centered overlay */
+.hero{position:relative;height:74vh;min-height:460px;overflow:hidden;background:#c9c4bd center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero::after{content:"";position:absolute;inset:0;background:rgba(30,26,24,.28)}
+.hero .cap{position:relative;z-index:2;color:#fff;padding:0 24px}
+.hero .cat{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;opacity:.9}
+.hero h1{font-weight:200;font-size:clamp(30px,5vw,58px);letter-spacing:.06em;text-transform:uppercase;line-height:1.14;margin:16px 0 10px;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero .sub{font-weight:300;font-size:clamp(15px,2vw,20px);letter-spacing:.02em;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.hero .go{display:inline-block;margin-top:26px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#fff;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:5px;transition:border-color .3s}
+.hero:hover .go{border-color:#fff}
 
-.section-head{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--line);padding-top:22px;margin-bottom:40px;gap:20px}
-.section-head h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:32px}
-.section-head a{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
-.section-head a:hover{color:var(--wine)}
+/* recent posts grid */
+.sec-title{text-align:center;margin:80px 0 42px}
+.sec-title span{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:500}
+.sec-title h2{font-weight:200;font-size:32px;letter-spacing:.02em;margin-top:8px}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 34px}
+.post{display:block}
+.post .ph{aspect-ratio:3/2;overflow:hidden;background:#EFEDE9}
+.post .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.post:hover .ph img{transform:scale(1.045)}
+.post .cat{margin-top:16px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:500}
+.post h3{font-weight:400;font-size:20px;line-height:1.3;margin-top:7px}
+.post p{margin-top:8px;color:var(--soft);font-size:14px;font-weight:300;line-height:1.6}
+.post .meta{margin-top:10px;font-size:11.5px;letter-spacing:.03em;color:#b3b3b3}
 
-.feature{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;margin-bottom:30px}
-.feature .img{aspect-ratio:5/6;overflow:hidden;background:#EFEDE9}
-.feature .img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
-.feature:hover .img img{transform:scale(1.03)}
-.feature .tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--wine)}
-.feature h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,3.6vw,46px);line-height:1.06;margin:16px 0 18px}
-.feature p{color:var(--soft);font-weight:300;font-size:16.5px;line-height:1.6;max-width:44ch}
-.feature .more{margin-top:26px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--wine);padding-bottom:4px;display:inline-block}
+.morebtn{text-align:center;margin-top:56px}
+.morebtn a{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);border:1px solid var(--ink);padding:13px 34px;transition:all .25s}
+.morebtn a:hover{background:var(--ink);color:#fff}
 
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:52px 40px;margin-top:96px}
-.item{display:block}
-.item .img{aspect-ratio:4/5;background:#EFEDE9;position:relative;overflow:hidden}
-.item .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.item:hover .img img{transform:scale(1.045)}
-.item .img .tag{position:absolute;top:14px;left:14px;background:var(--wine);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:6px 11px;z-index:2}
-.item h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:25px;line-height:1.16;margin-top:18px}
-.item p{margin-top:8px;color:var(--soft);font-size:14.5px;font-weight:300;line-height:1.5}
+/* subscribe strip, like the Wix "Subscribe for Updates" */
+.subscribe{margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:64px 0;text-align:center}
+.subscribe h3{font-weight:200;font-size:26px;letter-spacing:.03em}
+.subscribe p{color:var(--soft);font-size:14px;margin-top:8px}
+.subscribe form{margin:26px auto 0;max-width:440px;display:flex;gap:0;border:1px solid #d9d9d9}
+.subscribe input{flex:1;border:none;padding:13px 16px;font-family:inherit;font-size:14px;outline:none;background:transparent}
+.subscribe button{border:none;background:var(--coral);color:#fff;font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:0 24px;cursor:pointer}
 
-.band{position:relative;height:82vh;min-height:520px;margin:120px 0;overflow:hidden;background:#0F0E0D center/cover no-repeat fixed;display:flex;align-items:center;justify-content:center;text-align:center}
-.band::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 50%,rgba(0,0,0,.5),rgba(0,0,0,.15) 55%,rgba(0,0,0,0) 85%)}
-.band .in{position:relative;z-index:2;color:#fff;padding:0 24px}
-.band .k{font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.85}
-.band h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(38px,6vw,78px);line-height:1.05;margin-top:18px;text-shadow:0 2px 40px rgba(0,0,0,.5)}
+footer{padding:56px 0 64px;text-align:center}
+footer .fl{max-width:150px;margin:0 auto 16px;opacity:.9}
+footer .fnav{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:22px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+footer .cr{margin-top:20px;font-size:12px;color:#b3b3b3}
+footer a.mail{color:var(--ink);border-bottom:1px solid var(--coral);padding-bottom:2px}
 
-.credo{padding:130px 0;text-align:center;border-top:1px solid var(--line)}
-.credo p{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(28px,4vw,50px);line-height:1.28;max-width:22ch;margin:0 auto}
-.credo p .q{color:var(--wine);font-style:normal}
-
-.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:96px}
-.cat{background:#fff;padding:44px 22px;text-align:center;transition:background .3s}
-.cat:hover{background:#FBF9F6}
-.cat h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:27px}
-.cat span{display:block;margin-top:6px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
-
-footer{border-top:1px solid var(--line);padding:56px 0;margin-top:120px}
-.foot-in{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
-.foot-in .brand{font-size:22px}
-.foot-in .note{max-width:40ch;font-size:12.5px;color:var(--soft);font-weight:300;line-height:1.65}
-.foot-in a.mail{color:var(--ink);border-bottom:1px solid var(--wine);padding-bottom:2px}
-
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
 
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.feature{grid-template-columns:1fr;gap:28px}.cats{grid-template-columns:repeat(2,1fr)}.nav-links{gap:18px}}
-@media(max-width:560px){.wrap{padding:0 22px}.grid{grid-template-columns:1fr;gap:44px}.nav-links a{font-size:11px;letter-spacing:.08em}.nav-links{gap:14px}.hero{padding:64px 0 56px}.band{background-attachment:scroll;height:66vh}}
-@media(prefers-reduced-motion:reduce){.band{background-attachment:scroll}.reveal{opacity:1;transform:none;transition:none}}
+@media(max-width:860px){.posts{grid-template-columns:repeat(2,1fr)}.mainnav ul{gap:22px}}
+@media(max-width:540px){.wrap{padding:0 22px}.posts{grid-template-columns:1fr;gap:38px}.mainnav ul{gap:16px;font-size:12px}.hero{height:64vh}.masthead .logo{max-width:190px}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
-<header class="nav"><div class="wrap nav-in">
-  <a href="index.html" class="brand">Ξινόμαυρη<span class="dot">.</span></a>
-  <nav class="nav-links">
-    <a href="recipes.html">Συνταγές</a>
-    <a href="wine.html">Κρασί</a>
-    <a href="stories.html">Ιστορίες</a>
-    <a href="mood.html">Mood</a>
-    <a href="about.html">Ποια είμαι</a>
-  </nav>
-</div></header>
 
-<section class="hero"><div class="wrap">
-  <div class="label">Κουζίνα · Κρασί · Ιστορίες</div>
-  <h1 class="serif">Δεν είμαστε ό,τι τρώμε.<br>Είμαστε <em>όλα όσα ζήσαμε</em>.</h1>
-  <p class="sub">Ένα τραπέζι κάτω από τον κυκλαδίτικο ήλιο — συνταγές που ταξιδεύουν, κρασιά που θυμούνται, και ιστορίες ανθρώπων που τις κρατάμε ζωντανές.</p>
-  <div class="by">Ξινόμαυρη — ορεσίβια βαλκάνια</div>
-</div></section>
+<header class="masthead"><div class="wrap">
+  <a href="index.html"><img class="logo" src="images/logo.png" alt="Ξινόμαυρη"></a>
+  <p class="tagline">ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου</p>
+</div>
+<nav class="mainnav"><ul>
+  <li><a href="recipes.html">Recipes</a></li>
+  <li><a href="wine.html">Wine</a></li>
+  <li><a href="stories.html">Stories</a></li>
+  <li><a href="about.html">About</a></li>
+  <li><a href="blog.html">All Posts</a></li>
+  <li><a href="contact.html">Contact</a></li>
+</ul></nav>
+</header>
+
+<a class="hero" href="post-milena.html" style="background-image:url('images/milena-hero.jpg')">
+  <div class="cap">
+    <div class="cat">Recipes · Βελιγράδι</div>
+    <h1>Η κρεατόπιτα της Μιλένας</h1>
+    <div class="sub">Η συνταγή μιας σπάνιας γυναίκας, γεννημένης το 1908</div>
+    <span class="go">Διάβασε τη συνταγή</span>
+  </div>
+</a>
 
 <div class="wrap">
-  <div class="section-head reveal"><h2 class="serif">Το τελευταίο τραπέζι</h2><a href="recipes.html">Όλες οι συνταγές</a></div>
-  <a class="feature reveal" href="post-milena.html">
-    <div class="img"><img src="images/milena-hero.jpg" alt="Η κρεατόπιτα της Μιλένας"></div>
-    <div class="body">
-      <span class="tag">Συνταγές — Βελιγράδι</span>
-      <h3 class="serif">Η κρεατόπιτα της Μιλένας</h3>
-      <p>Η συνταγή μιας σπάνιας γυναίκας, γεννημένης το 1908 στο Βάλιεβο· μια πίτα που την περιχύνεις με αυγά, στραγγιστό γιαούρτι και ανθρακούχο νερό, και αφρατεύει σαν ανάμνηση.</p>
-      <span class="more">Διάβασε τη συνταγή</span>
-    </div>
-  </a>
+  <div class="sec-title reveal"><span>Το ημερολόγιο</span><h2>Πρόσφατα στο τραπέζι</h2></div>
+  <div class="posts">
+    <a class="post reveal" href="post-milena.html">
+      <div class="ph"><img src="images/milena-hero.jpg" alt="Η κρεατόπιτα της Μιλένας"></div>
+      <div class="cat">Recipes</div>
+      <h3>Η κρεατόπιτα της Μιλένας</h3>
+      <p>Μια πίτα από το Βελιγράδι που την περιχύνεις με αυγά, στραγγιστό γιαούρτι και ανθρακούχο νερό.</p>
+      <div class="meta">xinomavri · 6 Οκτ 2021 · 3 min</div>
+    </a>
+    <a class="post reveal" href="post-milena.html">
+      <div class="ph"><img src="images/milena-2.jpg" alt="Λεπτομέρεια"></div>
+      <div class="cat">Stories</div>
+      <h3>Ορεσίβια βαλκάνια</h3>
+      <p>Πώς μια γυναίκα των βουνών βρέθηκε να ζει κάτω από τον ανελέητο κυκλαδίτικο ήλιο.</p>
+      <div class="meta">xinomavri · 2021 · 4 min</div>
+    </a>
+    <a class="post reveal" href="about.html">
+      <div class="ph"><img src="images/about.png" alt="Ποια είμαι"></div>
+      <div class="cat">About</div>
+      <h3>Ποια είμαι</h3>
+      <p>Ξεκίνησα να μαγειρεύω μόλις άρχισα να ζω μόνη μου — γιατί ήταν ο πιο εύκολος τρόπος να πω ιστορίες.</p>
+      <div class="meta">Ξινόμαυρη</div>
+    </a>
+  </div>
+  <div class="morebtn reveal"><a href="blog.html">Όλες οι αναρτήσεις</a></div>
 </div>
 
-<section class="band reveal" style="background-image:url('images/milena-2.jpg')">
-  <div class="in">
-    <div class="k">Ξινόμαυρη</div>
-    <h2 class="serif">Μαγειρεύω γιατί είναι<br>ο πιο εύκολος τρόπος<br>να πω ιστορίες.</h2>
-  </div>
-</section>
-
-<div class="wrap">
-  <div class="section-head reveal"><h2 class="serif">Περιήγηση</h2><a href="about.html">Ποια είμαι</a></div>
-  <div class="cats reveal">
-    <a class="cat" href="recipes.html"><h3 class="serif">Συνταγές</h3><span>Recipes</span></a>
-    <a class="cat" href="wine.html"><h3 class="serif">Κρασί</h3><span>Wine</span></a>
-    <a class="cat" href="stories.html"><h3 class="serif">Ιστορίες</h3><span>Stories</span></a>
-    <a class="cat" href="mood.html"><h3 class="serif">Mood</h3><span>Της ημέρας</span></a>
-  </div>
-</div>
-
-<section class="credo reveal"><div class="wrap">
-  <p class="serif">Είμαστε ο τρόπος που <span class="q">μεταβολίζουμε τις καταστροφές</span>, οι σχέσεις που χτίσαμε, και πολλά, πολλά ακόμη.</p>
+<section class="subscribe reveal"><div class="wrap">
+  <h3>Subscribe</h3>
+  <p>Νέες συνταγές και ιστορίες, κατευθείαν στο inbox σου.</p>
+  <form onsubmit="this.querySelector('button').textContent='Ευχαριστώ';return false;">
+    <input type="email" placeholder="Το email σου" required>
+    <button type="submit">Εγγραφή</button>
+  </form>
 </div></section>
 
-<footer><div class="wrap foot-in">
-  <a href="index.html" class="brand serif">Ξινόμαυρη<span class="dot" style="color:var(--wine)">.</span></a>
-  <p class="note">Ορεσίβια βαλκάνια, κάτω από τον κυκλαδίτικο ήλιο. Συνταγές, κρασί και ιστορίες από ένα τραπέζι.<br><br><a class="mail" href="mailto:xinomavri@gmail.com">xinomavri@gmail.com</a></p>
+<footer><div class="wrap">
+  <img class="fl" src="images/logo.png" alt="Ξινόμαυρη">
+  <ul class="fnav">
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="wine.html">Wine</a></li>
+    <li><a href="stories.html">Stories</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p class="cr">© Ξινόμαυρη · <a class="mail" href="mailto:xinomavri@gmail.com">xinomavri@gmail.com</a></p>
 </div></footer>
 
 <script>
 (function(){
   var els=document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
-  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.12});
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.1});
   els.forEach(function(e){io.observe(e);});
 })();
 </script>

@@ -11,91 +11,88 @@
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#FFFFFF;--ink:#141312;--soft:#8C8881;--line:#ECEAE5;--wine:#8E1C2B}
+:root{--paper:#FFFFFF;--ink:#2B2B2B;--soft:#8B8B8B;--line:#ECECEC;--coral:#E44650}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
-.serif{font-family:'Cormorant Garamond',Georgia,serif}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',Helvetica,Arial,sans-serif;font-weight:300;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-.wrap{max-width:720px;margin:0 auto;padding:0 40px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+.narrow{max-width:680px}
 
-header.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav-in{max-width:1240px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
-.brand{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;letter-spacing:.02em}
-.brand .dot{color:var(--wine)}
-.nav-links{display:flex;gap:30px}
-.nav-links a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);transition:color .3s}
-.nav-links a:hover{color:var(--ink)}
+.masthead{padding:34px 0 0;text-align:center}
+.masthead .logo{max-width:210px;margin:0 auto}
+.masthead .tagline{margin:14px auto 0;font-weight:200;font-size:14px;letter-spacing:.02em;color:#6f6f6f;max-width:34ch}
+.mainnav{margin-top:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mainnav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:34px;padding:16px 0}
+.mainnav a{font-size:13px;font-weight:400;letter-spacing:.08em;color:var(--ink);text-transform:uppercase;transition:color .25s}
+.mainnav a:hover{color:var(--coral)}
 
-.arthead{padding:80px 0 34px;text-align:center}
-.arthead .kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--wine)}
-.arthead h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(38px,5.6vw,68px);line-height:1.04;letter-spacing:-.01em;margin:18px 0 16px}
-.arthead .date{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+article{padding:56px 0 20px}
+.crumb{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);font-weight:500}
+article h1{font-weight:200;font-size:clamp(30px,4.6vw,50px);letter-spacing:.01em;line-height:1.12;margin:14px 0 12px}
+.byline{font-size:12.5px;letter-spacing:.04em;color:#a9a9a9;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.byline b{font-weight:500;color:#7d7d7d}
+.lede{font-weight:200;font-size:22px;line-height:1.55;color:#3a3a3a;margin:34px 0 4px}
+article p{margin:20px 0;font-size:17px;line-height:1.85;color:#333}
+.figfull{margin:40px 0}
+.figfull img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#EFEDE9}
+.figfull figcaption{margin-top:10px;font-size:12px;color:var(--soft);text-align:center}
+.h-ing{font-weight:500;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin:38px 0 12px}
+.ing{list-style:none;padding:0;margin:0 0 10px}
+.ing li{padding:10px 0;border-bottom:1px solid var(--line);font-size:16px;color:#333}
+.pull{font-weight:200;font-size:26px;line-height:1.4;color:var(--coral);text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 20px;margin:44px 0}
+.sig{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--soft)}
 
-.hero-img{margin:20px auto 54px;max-width:1160px;padding:0 40px}
-.hero-img img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#EFEDE9}
+.backline{border-top:1px solid var(--line);margin-top:64px;padding:30px 0;text-align:center}
+.backline a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.backline a:hover{color:var(--coral)}
+footer{padding:44px 0 56px;text-align:center}
+footer .fl{max-width:140px;margin:0 auto 14px}
+footer .cr{font-size:12px;color:#b3b3b3}
 
-article p{margin:0 0 22px;font-size:18px;line-height:1.75;color:#26221E;font-weight:400}
-article p.lead{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:25px;line-height:1.5;color:var(--ink)}
-article h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:38px;line-height:1.1;margin:54px 0 10px}
-article h3{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--wine);margin:34px 0 14px}
-.ingredients{list-style:none;padding:0;margin:0 0 18px}
-.ingredients li{padding:11px 0;border-bottom:1px solid var(--line);font-size:16.5px;color:#26221E}
-.pull{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:30px;line-height:1.32;color:var(--wine);text-align:center;margin:46px auto;max-width:20ch}
-figure{margin:44px auto}
-figure img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#EFEDE9}
-figure figcaption{margin-top:12px;font-size:12px;letter-spacing:.04em;color:var(--soft);text-align:center;font-weight:300}
-.note{margin:56px 0 0;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--soft);font-weight:300}
-
-.backline{border-top:1px solid var(--line);margin-top:80px;padding:34px 0;text-align:center}
-.backline a{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
-.backline a:hover{color:var(--wine)}
-footer{border-top:1px solid var(--line);padding:48px 0;text-align:center;color:var(--soft);font-size:12.5px;font-weight:300}
-footer .brand{font-size:20px;color:var(--ink)}
-
-@media(max-width:560px){.wrap{padding:0 22px}.nav-in{padding:0 22px}.nav-links{gap:14px}.nav-links a{font-size:11px;letter-spacing:.06em}.hero-img{padding:0 22px}.arthead{padding:50px 0 26px}}
+@media(max-width:540px){.wrap{padding:0 22px}.mainnav ul{gap:16px}.masthead .logo{max-width:180px}}
 </style>
 </head>
 <body>
-<header class="nav"><div class="nav-in">
-  <a href="index.html" class="brand">Ξινόμαυρη<span class="dot">.</span></a>
-  <nav class="nav-links">
-    <a href="recipes.html">Συνταγές</a>
-    <a href="wine.html">Κρασί</a>
-    <a href="stories.html">Ιστορίες</a>
-    <a href="mood.html">Mood</a>
-    <a href="about.html">Ποια είμαι</a>
-  </nav>
-</div></header>
 
-<div class="arthead"><div class="wrap">
-  <div class="kicker">Συνταγές · Βελιγράδι</div>
-  <h1 class="serif">Η κρεατόπιτα της Μιλένας</h1>
-  <div class="date">6 Οκτωβρίου 2021</div>
-</div></div>
+<header class="masthead"><div class="wrap">
+  <a href="index.html"><img class="logo" src="images/logo.png" alt="Ξινόμαυρη"></a>
+  <p class="tagline">ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου</p>
+</div>
+<nav class="mainnav"><ul>
+  <li><a href="recipes.html">Recipes</a></li>
+  <li><a href="wine.html">Wine</a></li>
+  <li><a href="stories.html">Stories</a></li>
+  <li><a href="about.html">About</a></li>
+  <li><a href="blog.html">All Posts</a></li>
+  <li><a href="contact.html">Contact</a></li>
+</ul></nav>
+</header>
 
-<div class="hero-img"><img src="images/milena-hero.jpg" alt="Η κρεατόπιτα της Μιλένας"></div>
+<article><div class="wrap narrow">
+  <div class="crumb">Recipes</div>
+  <h1>Η κρεατόπιτα της Μιλένας</h1>
+  <div class="byline"><b>xinomavri</b><span>·</span><span>6 Οκτωβρίου 2021</span><span>·</span><span>3 min ανάγνωση</span></div>
 
-<article><div class="wrap">
-  <p class="lead">Επειδή, όπως φαντάζεστε, η ξινόμαυρη κάνει και διεθνή καριέρα, μετά τη δημοσίευση της Βελιγραδέζας πρασοτυρόπιτας λάβαμε από το Βελιγράδι δύο παραλλαγές αυτής της πίτας.</p>
+  <p class="lede">Επειδή, όπως φαντάζεστε, η ξινόμαυρη κάνει και διεθνή καριέρα, μετά τη δημοσίευση της Βελιγραδέζας πρασοτυρόπιτας λάβαμε από το Βελιγράδι δύο παραλλαγές αυτής της πίτας.</p>
+
+  <div class="figfull"><img src="images/milena-hero.jpg" alt="Η κρεατόπιτα της Μιλένας"></div>
 
   <p>Μία κρεατόπιτα και μία τυρόπιτα, τις οποίες μαγείρευε μία σπάνια γυναίκα, η Milena Stanimirović. Η Μιλένα γεννήθηκε στο Βάλιεβο το 1908 και αγαπούσε πολύ τα γράμματα, αλλά στις αρχές του αιώνα η εκπαίδευση των γυναικών αντιμετώπιζε τεράστια εμπόδια. Παντρεύτηκε τον Μίροσλαβ Μαριάνοβιτς, ζήσανε όλοι τους τη ζωή στην καρδιά του Βελιγραδίου, και κάνανε τρεις κόρες, τις οποίες φυσικά εξόπλισε με λαμπρές σπουδές. Η μία έγινε κτηνίατρος, η δεύτερη αρχιτέκτονας και η τρίτη, η Μίριανα, μία σπουδαία αρχαιολόγος.</p>
 
   <p>Οι συνταγές της Μιλένας διαφέρουν μόνο ως προς τη γέμιση, ενώ παραμένει ίδια η τεχνική του τελειώματος της πίτας. Παραθέτω σήμερα την κρεατόπιτα και ευχαριστώ θερμά τον εγγονό της, τον Μίροσλαβ, ο οποίος μου εμπιστεύτηκε τις συνταγές και τις φωτογραφίες.</p>
 
-  <p class="pull">Την περιχύνουμε με ένα μείγμα από αυγά, στραγγιστό γιαούρτι και ανθρακούχο νερό.</p>
+  <div class="pull">Την περιχύνουμε με ένα μείγμα από αυγά, στραγγιστό γιαούρτι και ανθρακούχο νερό.</div>
 
   <p>Το μείγμα ομογενοποιεί τα φύλλα και τη γέμιση μ' έναν πολύ ενδιαφέροντα τρόπο, ενώ το ανθρακικό του νερού την αφρατεύει και της δίνει όγκο.</p>
 
-  <figure><img src="images/milena-2.jpg" alt="Η κρεατόπιτα της Μιλένας, λεπτομέρεια"><figcaption>Φωτογραφίες: αρχείο οικογένειας Stanimirović, με ευγενική παραχώρηση.</figcaption></figure>
+  <div class="figfull"><img src="images/milena-2.jpg" alt="Η κρεατόπιτα της Μιλένας, λεπτομέρεια"><figcaption>Φωτογραφίες: αρχείο οικογένειας Stanimirović, με ευγενική παραχώρηση.</figcaption></div>
 
-  <h2 class="serif">Η συνταγή</h2>
-
-  <h3>Υλικά</h3>
-  <ul class="ingredients">
+  <div class="h-ing">Υλικά</div>
+  <ul class="ing">
     <li>500 γρ φύλλα πίτας (συστήνω ανεπιφύλακτα το Ζαγορίσιο παραδοσιακό φύλλο Χαβέλα)</li>
     <li>600 γρ μοσχαρίσιος κιμάς</li>
     <li>1-2 ξερά κρεμμύδια</li>
@@ -104,14 +101,14 @@ footer .brand{font-size:20px;color:var(--ink)}
     <li>½ φλιτζάνι έξτρα παρθένο ελαιόλαδο</li>
   </ul>
 
-  <h3>Για το μείγμα</h3>
-  <ul class="ingredients">
+  <div class="h-ing">Για το μείγμα</div>
+  <ul class="ing">
     <li>2 αυγά</li>
     <li>1 φλιτζάνι γιαούρτι στραγγιστό</li>
     <li>1 φλιτζάνι ανθρακούχο νερό</li>
   </ul>
 
-  <h3>Οδηγίες</h3>
+  <div class="h-ing">Οδηγίες</div>
   <p>Ψιλοκόβουμε τα κρεμμύδια και τα μαραίνουμε σε λίγο ελαιόλαδο. Ρίχνουμε το γάλα για να μαγειρευτούν μέσα σ' αυτό, μέχρι σχεδόν να εξατμιστεί.</p>
   <p>Προσθέτουμε τον κιμά, αλατίζουμε, πιπερώνουμε και ανακατεύουμε διαρκώς για να σοταριστεί ομοιόμορφα. Προσθέτουμε τα μυρωδικά μας, ανακατεύουμε και το αφήνουμε να κρυώσει. Χωρίζουμε τη γέμιση σε δύο μέρη.</p>
   <p>Λαδώνουμε καλά ένα ταψί διαστάσεων 30Χ40. Στρώνουμε ένα φύλλο και το λαδώνουμε με δύο κουταλιές ελαιόλαδο. Αν έχουμε σπρέι λαδιού, το ψεκάζουμε σε όλη του την επιφάνεια. Στρώνουμε από πάνω ένα 2ο φύλλο και απλώνουμε τη μισή γέμιση, προσέχοντας να διασκορπιστεί καλά. Επαναλαμβάνουμε την ίδια διαδικασία, φύλλο – λάδωμα – φύλλο – υπόλοιπη γέμιση. Στρώνουμε ένα ακόμη φύλλο, το λαδώνουμε και αυτό, και στρώνουμε και το τελευταίο.</p>
@@ -120,12 +117,13 @@ footer .brand{font-size:20px;color:var(--ink)}
 
   <p>Ονειρεύομαι βόλτες στο φθινοπωρινό Βελιγράδι και υπόσχομαι στον εαυτό μου ότι αυτό θα είναι το πρώτο μου ταξίδι μετά την πανδημία.</p>
 
-  <div class="note">Κρεατόπιτα από το Βελιγράδι. Φωτογραφίες: αρχείο οικογένειας Stanimirović.</div>
+  <div class="sig">Κρεατόπιτα από το Βελιγράδι · Φωτογραφίες: αρχείο οικογένειας Stanimirović.</div>
 </div></article>
 
-<div class="backline"><a href="recipes.html">← Όλες οι συνταγές</a></div>
+<div class="backline"><a href="blog.html">← Όλες οι αναρτήσεις</a></div>
 <footer><div class="wrap">
-  <div class="brand serif">Ξινόμαυρη<span style="color:var(--wine)">.</span></div>
+  <img class="fl" src="images/logo.png" alt="Ξινόμαυρη">
+  <p class="cr">© Ξινόμαυρη · xinomavri@gmail.com</p>
 </div></footer>
 </body>
 </html>
