@@ -1,19 +1,30 @@
-<!DOCTYPE html>
-<html lang="el">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="index,follow">
-<title>Ξινόμαυρη — ιστορίες για το φαγητό</title>
-<meta name="description" content="Ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου. Συνταγές, κρασί και ιστορίες.">
-<link rel="canonical" href="https://xinomavri.com/">
-<meta property="og:title" content="Ξινόμαυρη — ιστορίες για το φαγητό">
-<meta property="og:description" content="Ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου. Συνταγές, κρασί και ιστορίες.">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-<style>
+#!/usr/bin/env python3
+# Builds the full xinomavri.com static mirror from migration/index.json + migration/bodies/*.json
+import json, os, re, html, glob
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE = os.path.join(ROOT, 'site')
+idx = json.load(open(os.path.join(ROOT,'migration','index.json')))
+bodies = {}
+for f in glob.glob(os.path.join(ROOT,'migration','bodies','*.json')):
+    try:
+        d = json.load(open(f)); bodies[d['slug']] = d
+    except Exception as e:
+        print('bad body', f, e)
+
+CAT_LABEL = {'recipes':'Recipes','wine':'Wine','stories':'Stories','mood':'Mood','uncorked':'Uncorked'}
+GR_MONTH = ['Ιανουαρίου','Φεβρουαρίου','Μαρτίου','Απριλίου','Μαΐου','Ιουνίου','Ιουλίου','Αυγούστου','Σεπτεμβρίου','Οκτωβρίου','Νοεμβρίου','Δεκεμβρίου']
+def gr_date(d):
+    m = re.match(r'(\d{4})-(\d{2})-(\d{2})', d or '')
+    if not m: return ''
+    y,mo,da = m.groups(); return f"{int(da)} {GR_MONTH[int(mo)-1]} {y}"
+
+def esc(s): return html.escape(s or '', quote=True)
+def post_href(slug): return f"post-{re.sub(r'[^A-Za-z0-9_-]','-',slug)}.html"
+def thumb(r):
+    return r.get('hero_local') or (f"images/posts/{r['slug']}/01.jpg" if os.path.isdir(os.path.join(SITE,'images','posts',r['slug'])) else '')
+
+CSS = """
 :root{--paper:#FFFFFF;--ink:#2B2B2B;--soft:#8B8B8B;--line:#ECECEC;--coral:#E44650}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -101,114 +112,51 @@ footer a.mail{color:var(--ink);border-bottom:1px solid var(--coral);padding-bott
 @media(max-width:860px){.posts{grid-template-columns:repeat(2,1fr)}.mainnav ul{gap:20px}}
 @media(max-width:540px){.wrap{padding:0 22px}.posts{grid-template-columns:1fr;gap:38px}.mainnav ul{gap:15px;font-size:12px}.carousel{height:64vh}.masthead .logo{max-width:190px}}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-</style>
+"""
+
+FONT = '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">'
+
+def head(title, desc, canonical):
+    return f"""<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(desc)}">
+<link rel="canonical" href="https://xinomavri.com/{canonical}">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(desc)}">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{FONT}
+<style>{CSS}</style>
 </head>
 <body>
-<header class="masthead"><div class="wrap">
+"""
+
+def mast(active=''):
+    def a(href,label,key):
+        cls=' class="on"' if key==active else ''
+        return f'<li><a href="{href}"{cls}>{label}</a></li>'
+    return f"""<header class="masthead"><div class="wrap">
   <a href="index.html"><img class="logo" src="images/logo.png" alt="Ξινόμαυρη"></a>
   <p class="tagline">ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου</p>
 </div>
 <nav class="mainnav"><ul>
-  <li><a href="recipes.html">Recipes</a></li>
-  <li><a href="wine.html">Wine</a></li>
-  <li><a href="stories.html">Stories</a></li>
-  <li><a href="about.html">About</a></li>
-  <li><a href="blog.html">All Posts</a></li>
-  <li><a href="contact.html">Contact</a></li>
+  {a('recipes.html','Recipes','recipes')}
+  {a('wine.html','Wine','wine')}
+  {a('stories.html','Stories','stories')}
+  {a('about.html','About','about')}
+  {a('blog.html','All Posts','blog')}
+  {a('contact.html','Contact','contact')}
 </ul></nav>
 </header>
-<section class="carousel" id="carousel" aria-label="Featured">
-  <div class="slides"><a class="slide on" href="post-brownies-1.html" style="background-image:url('images/heroes/brownies-1.jpg')">
-      <div class="cap"><div class="cat">Recipes</div>
-      <h1>Μπράουνις με θαλασσινό αλάτι</h1>
-      <div class="sub">Ένα μείγμα, δέκα συνταγές!Υπάρχει ένα μαγικό μείγμα με το οποίο μπορεί κανείς να κάνει του</div>
-      <span class="go">Διάβασε το άρθρο</span></div></a><a class="slide" href="post-patatoes.html" style="background-image:url('images/heroes/patatoes.jpg')">
-      <div class="cap"><div class="cat">Recipes</div>
-      <h1>Πατάτες σαν τηγανιτές</h1>
-      <div class="sub">Πατάτες στη λαδόκολλαΣυνήθως διαφωνώ με κάθε συνταγή που περιέχει το «σαν». Σαν σαντιγύ, σ</div>
-      <span class="go">Διάβασε το άρθρο</span></div></a><a class="slide" href="post-selinoriza.html" style="background-image:url('images/heroes/selinoriza.jpg')">
-      <div class="cap"><div class="cat">Recipes</div>
-      <h1>Σελινόριζα αλά πολίτα</h1>
-      <div class="sub">Xειμωνιάτικο φαγητό, με τρία είδη βολβών, σελινόριζα-πατάτες-καρότα. Αν και οι γεύσεις είν</div>
-      <span class="go">Διάβασε το άρθρο</span></div></a><a class="slide" href="post-pantzari_salad.html" style="background-image:url('images/heroes/pantzari_salad.jpg')">
-      <div class="cap"><div class="cat">Recipes</div>
-      <h1>Μίσχοι και παντζαρόφυλλα</h1>
-      <div class="sub">Βραστή σαλάτα με πορτοκάλιΕίναι χάρμα οφθαλμών. Τόσο οι μίσχοι όσο και τα φύλλα του παντζα</div>
-      <span class="go">Διάβασε το άρθρο</span></div></a><a class="slide" href="post-myfatherspie.html" style="background-image:url('images/heroes/myfatherspie.jpg')">
-      <div class="cap"><div class="cat">Recipes</div>
-      <h1>Η πίτα του πατέρα μου</h1>
-      <div class="sub">Τυρόπιτα με φίλο κρούστας Καθ΄όλη τη διάρκεια των παιδικών μου χρόνων δεν ευτύχισα να φάω </div>
-      <span class="go">Διάβασε το άρθρο</span></div></a></div>
-  <button class="car-btn car-prev" aria-label="Προηγούμενο">‹</button>
-  <button class="car-btn car-next" aria-label="Επόμενο">›</button>
-  <div class="car-dots" id="carDots"></div>
-</section>
-<div class="wrap">
-  <div class="sec-title reveal"><span>Το ημερολόγιο</span><h2>Πρόσφατα στο τραπέζι</h2></div>
-  <div class="posts"><a class="post reveal" href="post-brownies-1.html">
-  <div class="ph"><img src="images/heroes/brownies-1.jpg" alt="Μπράουνις με θαλασσινό αλάτι" loading="lazy"></div>
-  <div class="cat">Recipes</div>
-  <h3>Μπράουνις με θαλασσινό αλάτι</h3>
-  <p>Ένα μείγμα, δέκα συνταγές!Υπάρχει ένα μαγικό μείγμα με το οποίο μπορεί κανείς να κάνει τουλάχιστον δέκα γλυκά. Λάβα κέικ, υπερσοκολατένιο κέικ, μπράου</p>
-  <div class="meta">xinomavri · 25 Φεβρουαρίου 2022</div>
-</a><a class="post reveal" href="post-patatoes.html">
-  <div class="ph"><img src="images/heroes/patatoes.jpg" alt="Πατάτες σαν τηγανιτές" loading="lazy"></div>
-  <div class="cat">Recipes</div>
-  <h3>Πατάτες σαν τηγανιτές</h3>
-  <p>Πατάτες στη λαδόκολλαΣυνήθως διαφωνώ με κάθε συνταγή που περιέχει το «σαν». Σαν σαντιγύ, σαν σοκολάτα, σαν μπεσαμέλ κτλ. Αυτό το δόγμα, τελικά δεν ισχ</p>
-  <div class="meta">xinomavri · 13 Φεβρουαρίου 2022</div>
-</a><a class="post reveal" href="post-selinoriza.html">
-  <div class="ph"><img src="images/heroes/selinoriza.jpg" alt="Σελινόριζα αλά πολίτα" loading="lazy"></div>
-  <div class="cat">Recipes</div>
-  <h3>Σελινόριζα αλά πολίτα</h3>
-  <p>Xειμωνιάτικο φαγητό, με τρία είδη βολβών, σελινόριζα-πατάτες-καρότα. Αν και οι γεύσεις είναι βαθιά γήινες, μπορεί το φαγητό να γίνει αέρινο και φίνο. </p>
-  <div class="meta">xinomavri · 8 Φεβρουαρίου 2022</div>
-</a><a class="post reveal" href="post-pantzari_salad.html">
-  <div class="ph"><img src="images/heroes/pantzari_salad.jpg" alt="Μίσχοι και παντζαρόφυλλα" loading="lazy"></div>
-  <div class="cat">Recipes</div>
-  <h3>Μίσχοι και παντζαρόφυλλα</h3>
-  <p>Βραστή σαλάτα με πορτοκάλιΕίναι χάρμα οφθαλμών. Τόσο οι μίσχοι όσο και τα φύλλα του παντζαριού έχουν πρώτα απ’ όλα εικαστικό ενδιαφέρον. Το σπάνιο σχή</p>
-  <div class="meta">xinomavri · 5 Φεβρουαρίου 2022</div>
-</a><a class="post reveal" href="post-myfatherspie.html">
-  <div class="ph"><img src="images/heroes/myfatherspie.jpg" alt="Η πίτα του πατέρα μου" loading="lazy"></div>
-  <div class="cat">Recipes</div>
-  <h3>Η πίτα του πατέρα μου</h3>
-  <p>Τυρόπιτα με φίλο κρούστας Καθ΄όλη τη διάρκεια των παιδικών μου χρόνων δεν ευτύχισα να φάω κάτι από τα χέρια του πατέρα μου. Αγνοούσα παντελώς ότι ήξερ</p>
-  <div class="meta">xinomavri · 31 Ιανουαρίου 2022</div>
-</a><a class="post reveal" href="post-gigantes.html">
-  <div class="ph"><img src="images/heroes/gigantes.jpg" alt="Φασόλια γίγαντες στο φούρνο" loading="lazy"></div>
-  <div class="cat">Recipes</div>
-  <h3>Φασόλια γίγαντες στο φούρνο</h3>
-  <p>Είναι φαγητό που θέλει παρέα. Δύσκολα το κάνεις για δύο άτομα. Η μισή του επιτυχία είναι η ποιότητα του φασολιού. Αν το φασόλι είναι καλό, τότε το φαγ</p>
-  <div class="meta">xinomavri · 30 Ιανουαρίου 2022</div>
-</a><a class="post reveal" href="post-kolokythopita.html">
-  <div class="ph"><img src="images/heroes/kolokythopita.jpg" alt="Γλυκιά κολοκυθόπιτα με φύλλο κρούστας" loading="lazy"></div>
-  <div class="cat">Recipes</div>
-  <h3>Γλυκιά κολοκυθόπιτα με φύλλο κρούστας</h3>
-  <p>Στριφτή κολοκυθόπιταΚάθε φθινόπωρο εμφανίζονται στην κουζίνα μου πολυάριθμες κολοκύθες. Λίγες από τον κήπο μας και αρκετές, πεσκέσια από φίλους και γν</p>
-  <div class="meta">xinomavri · 23 Ιανουαρίου 2022</div>
-</a><a class="post reveal" href="post-xinomavro.html">
-  <div class="ph"><img src="images/heroes/xinomavro.jpg" alt="Παγκόσμια Ημέρα Ξινόμαυρου" loading="lazy"></div>
-  <div class="cat">Wine</div>
-  <h3>Παγκόσμια Ημέρα Ξινόμαυρου</h3>
-  <p>Η 1η Νοεμβρίου έχει οριστεί ως Παγκόσμια Ημέρα Ξινόμαυρου (International Xinomavro Day). Η ένωση οινοποιών «Οίνοι Βορείου Ελλάδος» αποφάσισε να προχωρ</p>
-  <div class="meta">xinomavri · 31 Οκτωβρίου 2021</div>
-</a><a class="post reveal" href="post-kollyva.html">
-  <div class="ph"><img src="images/heroes/kollyva.jpeg" alt="Κόλλυβα" loading="lazy"></div>
-  <div class="cat">Recipes</div>
-  <h3>Κόλλυβα</h3>
-  <p>Το μυστικό για ωραία κόλλυβα βρίσκεται στους άφθονους και φρέσκους ξηρούς καρπούς. Προσθέτω και πολλές μαύρες μικρές σταφίδες και ελαχιστοποιώ τη ζάχα</p>
-  <div class="meta">xinomavri · 13 Οκτωβρίου 2021</div>
-</a></div>
-  <div class="morebtn reveal"><a href="blog.html">Όλες οι αναρτήσεις</a></div>
-</div>
-<section class="subscribe reveal"><div class="wrap">
-  <h3>Subscribe</h3><p>Νέες συνταγές και ιστορίες, κατευθείαν στο inbox σου.</p>
-  <form onsubmit="this.querySelector('button').textContent='Ευχαριστώ';return false;">
-    <input type="email" placeholder="Το email σου" required><button type="submit">Εγγραφή</button>
-  </form>
-</div></section>
-<footer><div class="wrap">
+"""
+
+FOOT = """<footer><div class="wrap">
   <img class="fl" src="images/logo.png" alt="Ξινόμαυρη">
   <ul class="fnav">
     <li><a href="recipes.html">Recipes</a></li>
@@ -220,7 +168,120 @@ footer a.mail{color:var(--ink);border-bottom:1px solid var(--coral);padding-bott
   </ul>
   <p class="cr">© Ξινόμαυρη · <a class="mail" href="mailto:xinomavri@gmail.com">xinomavri@gmail.com</a></p>
 </div></footer>
-<script>
+"""
+
+REVEAL_JS = """<script>
+(function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.08});
+els.forEach(function(e){io.observe(e);});})();
+</script>
+</body></html>"""
+
+def card(r):
+    t = thumb(r)
+    if t and os.path.exists(os.path.join(SITE,t)):
+        ph = f'<div class="ph"><img src="{t}" alt="{esc(r["title"])}" loading="lazy"></div>'
+    else:
+        ph = f'<div class="ph"><div class="noimg">{esc(r["title"])}</div></div>'
+    meta = f'xinomavri · {gr_date(r["date"])}' if r.get('date') else 'xinomavri'
+    exc = esc((r.get('excerpt') or '')[:150])
+    return f"""<a class="post reveal" href="{post_href(r['slug'])}">
+  {ph}
+  <div class="cat">{CAT_LABEL.get(r['category'],r['category'])}</div>
+  <h3>{esc(r['title'])}</h3>
+  <p>{exc}</p>
+  <div class="meta">{meta}</div>
+</a>"""
+
+posts = sorted(idx, key=lambda r:r['date'], reverse=True)
+
+# ---------- HOME ----------
+feat = [r for r in posts if r.get('hero_local')][:5]
+slides=[]
+for k,r in enumerate(feat):
+    slides.append(f"""<a class="slide{' on' if k==0 else ''}" href="{post_href(r['slug'])}" style="background-image:url('{r['hero_local']}')">
+      <div class="cap"><div class="cat">{CAT_LABEL.get(r['category'],r['category'])}</div>
+      <h1>{esc(r['title'])}</h1>
+      <div class="sub">{esc((r.get('excerpt') or '')[:90])}</div>
+      <span class="go">Διάβασε το άρθρο</span></div></a>""")
+recent = ''.join(card(r) for r in posts[:9])
+home = head('Ξινόμαυρη — ιστορίες για το φαγητό','Ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου. Συνταγές, κρασί και ιστορίες.','')
+home += mast()
+home += f"""<section class="carousel" id="carousel" aria-label="Featured">
+  <div class="slides">{''.join(slides)}</div>
+  <button class="car-btn car-prev" aria-label="Προηγούμενο">‹</button>
+  <button class="car-btn car-next" aria-label="Επόμενο">›</button>
+  <div class="car-dots" id="carDots"></div>
+</section>
+<div class="wrap">
+  <div class="sec-title reveal"><span>Το ημερολόγιο</span><h2>Πρόσφατα στο τραπέζι</h2></div>
+  <div class="posts">{recent}</div>
+  <div class="morebtn reveal"><a href="blog.html">Όλες οι αναρτήσεις</a></div>
+</div>
+<section class="subscribe reveal"><div class="wrap">
+  <h3>Subscribe</h3><p>Νέες συνταγές και ιστορίες, κατευθείαν στο inbox σου.</p>
+  <form onsubmit="this.querySelector('button').textContent='Ευχαριστώ';return false;">
+    <input type="email" placeholder="Το email σου" required><button type="submit">Εγγραφή</button>
+  </form>
+</div></section>
+"""
+home += FOOT
+home += """<script>
 (function(){var root=document.getElementById('carousel');if(!root)return;var slides=[].slice.call(root.querySelectorAll('.slide')),dw=document.getElementById('carDots'),i=0,t=null,n=slides.length;var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;slides.forEach(function(_,k){var b=document.createElement('button');if(k===0)b.className='on';b.onclick=function(e){e.preventDefault();go(k);reset();};dw.appendChild(b);});var dots=[].slice.call(dw.children);function go(k){i=(k+n)%n;slides.forEach(function(s,x){s.classList.toggle('on',x===i);});dots.forEach(function(d,x){d.classList.toggle('on',x===i);});}function next(){go(i+1);}function prev(){go(i-1);}function reset(){if(reduce||n<2)return;clearInterval(t);t=setInterval(next,5500);}root.querySelector('.car-next').onclick=function(e){e.preventDefault();next();reset();};root.querySelector('.car-prev').onclick=function(e){e.preventDefault();prev();reset();};root.addEventListener('mouseenter',function(){clearInterval(t);});root.addEventListener('mouseleave',reset);var x0=null;root.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});root.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){dx<0?next():prev();reset();}x0=null;});reset();})();
 (function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.08});els.forEach(function(e){io.observe(e);});})();
-</script></body></html>
+</script></body></html>"""
+open(os.path.join(SITE,'index.html'),'w').write(home)
+
+# ---------- LISTING PAGES ----------
+def listing(fname, active, kicker, h1, intro, subset):
+    h = head(f'{h1} — Ξινόμαυρη', intro, fname)
+    h += mast(active)
+    grid = ''.join(card(r) for r in subset) or '<p style="text-align:center;color:#8b8b8b">Σύντομα.</p>'
+    h += f"""<div class="pagehead"><div class="wrap"><div class="k">{kicker}</div><h1>{esc(h1)}</h1><p>{esc(intro)}</p></div></div>
+<div class="wrap"><div class="posts" style="margin-top:44px">{grid}</div></div>
+"""
+    h += FOOT + REVEAL_JS
+    open(os.path.join(SITE,fname),'w').write(h)
+
+listing('blog.html','blog','Ξινόμαυρη','Όλες οι αναρτήσεις',f'{len(posts)} ιστορίες για το φαγητό και το κρασί.', posts)
+for cat,label in CAT_LABEL.items():
+    sub=[r for r in posts if r['category']==cat]
+    intro={'recipes':'Συνταγές από ένα τραπέζι κάτω από τον κυκλαδίτικο ήλιο.','wine':'Ιστορίες για το κρασί και τους ανθρώπους του.','stories':'Ιστορίες γύρω από το φαγητό.','mood':'Η διάθεση της ημέρας.','uncorked':'Ξεβουλωμένες σκέψεις για το αμπέλι και το κρασί.'}[cat]
+    listing(f'{cat}.html',cat,'Κατηγορία',label,intro,sub)
+
+# ---------- POST PAGES ----------
+built=0; missing=[]
+for r in posts:
+    b = bodies.get(r['slug'])
+    if not b or not b.get('body_html','').strip():
+        missing.append(r['slug']); continue
+    hero = r.get('hero_local')
+    hero_html = f'<div class="arthero"><img src="{hero}" alt="{esc(r["title"])}"></div>' if hero and os.path.exists(os.path.join(SITE,hero)) else ''
+    h = head(f"{esc(r['title'])} — Ξινόμαυρη", (r.get('excerpt') or '')[:200], post_href(r['slug']))
+    h += mast(r['category'] if r['category'] in CAT_LABEL else '')
+    h += f"""<article><div class="wrap narrow">
+  <div class="crumb">{CAT_LABEL.get(r['category'],r['category'])}</div>
+  <h1 class="title">{esc(r['title'])}</h1>
+  <div class="byline"><b>xinomavri</b><span>·</span><span>{gr_date(r['date'])}</span></div>
+  {hero_html}
+  <div class="body">{b['body_html']}</div>
+</div></article>
+<div class="backline"><a href="blog.html">← Όλες οι αναρτήσεις</a></div>
+"""
+    h += FOOT + REVEAL_JS
+    open(os.path.join(SITE,post_href(r['slug'])),'w').write(h)
+    built+=1
+
+# ---------- CONTACT ----------
+contact = head('Contact — Ξινόμαυρη','Επικοινωνία με την Ξινόμαυρη.','contact.html') + mast('contact')
+contact += """<div class="pagehead"><div class="wrap"><div class="k">Ξινόμαυρη</div><h1>Contact</h1><p>Πες μου την ιστορία σου.</p></div></div>
+<div class="wrap narrow" style="text-align:center;padding:20px 0 40px">
+  <p style="font-size:18px;color:#333;margin:0 0 24px">Για συνταγές, ιστορίες, συνεργασίες ή απλώς για ένα γεια:</p>
+  <p style="font-size:20px"><a href="mailto:xinomavri@gmail.com" style="color:#2B2B2B;border-bottom:1px solid var(--coral);padding-bottom:3px">xinomavri@gmail.com</a></p>
+</div>
+""" + FOOT + REVEAL_JS
+open(os.path.join(SITE,'contact.html'),'w').write(contact)
+
+print(f'HOME + {len(CAT_LABEL)} category pages + blog + contact built.')
+print(f'POST pages built: {built} / {len(posts)}   (missing bodies: {len(missing)})')
+if missing: print('missing:', ', '.join(missing[:40]))
