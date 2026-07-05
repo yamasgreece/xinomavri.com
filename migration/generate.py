@@ -121,7 +121,15 @@ footer a.mail{color:var(--ink);border-bottom:1px solid var(--coral);padding-bott
 
 FONT = '<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">'
 
-def head(title, desc, canonical):
+def head(title, desc, canonical, image='', og_type='website', extra=''):
+    img_tags = ''
+    if image:
+        absimg = f"https://xinomavri.com/{image}"
+        img_tags = (f'<meta property="og:image" content="{absimg}">\n'
+                    f'<meta name="twitter:card" content="summary_large_image">\n'
+                    f'<meta name="twitter:image" content="{absimg}">\n'
+                    f'<meta name="twitter:title" content="{esc(title)}">\n'
+                    f'<meta name="twitter:description" content="{esc(desc)}">\n')
     return f"""<!DOCTYPE html>
 <html lang="el">
 <head>
@@ -131,13 +139,16 @@ def head(title, desc, canonical):
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="https://xinomavri.com/{canonical}">
+<meta property="og:site_name" content="Ξινόμαυρη">
+<meta property="og:locale" content="el_GR">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta property="og:type" content="{og_type}">
+<meta property="og:url" content="https://xinomavri.com/{canonical}">
+{img_tags}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {FONT}
-<style>{CSS}</style>
+{extra}<style>{CSS}</style>
 </head>
 <body>
 """
@@ -210,7 +221,15 @@ for k,r in enumerate(feat):
       <div class="sub">{esc((r.get('excerpt') or '')[:90])}</div>
       <span class="go">Διάβασε το άρθρο</span></div></a>""")
 recent = ''.join(card(r) for r in posts[:9])
-home = head('Ξινόμαυρη — ιστορίες για το φαγητό','Ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου. Συνταγές, κρασί και ιστορίες.','')
+_home_img = feat[0]['hero_local'] if feat else 'images/logo.png'
+_site_ld = ('<script type="application/ld+json">'+json.dumps({
+    "@context":"https://schema.org","@type":"WebSite","name":"Ξινόμαυρη",
+    "url":"https://xinomavri.com/","inLanguage":"el",
+    "description":"Ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου.",
+    "publisher":{"@type":"Organization","name":"Ξινόμαυρη","url":"https://xinomavri.com/",
+        "logo":{"@type":"ImageObject","url":"https://xinomavri.com/images/logo.png"}}
+},ensure_ascii=False)+'</script>\n')
+home = head('Ξινόμαυρη — ιστορίες για το φαγητό','Ιστορίες για το φαγητό και τις καλύτερες πάρτι στη ζωή μου. Συνταγές, κρασί και ιστορίες.','',image=_home_img,extra=_site_ld)
 home += mast()
 home += f"""<section class="carousel" id="carousel" aria-label="Featured">
   <div class="slides">{''.join(slides)}</div>
@@ -239,7 +258,8 @@ open(os.path.join(SITE,'index.html'),'w').write(home)
 
 # ---------- LISTING PAGES ----------
 def listing(fname, active, kicker, h1, intro, subset):
-    h = head(f'{h1} — Ξινόμαυρη', intro, fname)
+    _limg = next((x['hero_local'] for x in subset if x.get('hero_local')), 'images/logo.png')
+    h = head(f'{h1} — Ξινόμαυρη', intro, fname, image=_limg)
     h += mast(active)
     grid = ''.join(card(r) for r in subset) or '<p style="text-align:center;color:#8b8b8b">Σύντομα.</p>'
     h += f"""<div class="pagehead"><div class="wrap"><div class="k">{kicker}</div><h1>{esc(h1)}</h1><p>{esc(intro)}</p></div></div>
@@ -253,6 +273,56 @@ for cat,label in CAT_LABEL.items():
     sub=[r for r in posts if r['category']==cat]
     intro={'recipes':'Συνταγές από ένα τραπέζι κάτω από τον κυκλαδίτικο ήλιο.','wine':'Ιστορίες για το κρασί και τους ανθρώπους του.','stories':'Ιστορίες γύρω από το φαγητό.','mood':'Η διάθεση της ημέρας.','uncorked':'Ξεβουλωμένες σκέψεις για το αμπέλι και το κρασί.'}[cat]
     listing(f'{cat}.html',cat,'Κατηγορία',label,intro,sub)
+
+def _strip(s): return re.sub(r'\s+',' ', re.sub(r'<[^>]+>',' ', s or '')).strip()
+
+def _post_jsonld(r, og_image, body_html):
+    base = 'https://xinomavri.com/'
+    url = base + post_href(r['slug'])
+    img = (base+og_image) if og_image else ''
+    desc = _strip(r.get('excerpt') or '')[:300]
+    blog = {
+        "@context":"https://schema.org","@type":"BlogPosting",
+        "headline": r['title'], "description": desc,
+        "url": url, "mainEntityOfPage": {"@type":"WebPage","@id":url},
+        "author": {"@type":"Person","name":"xinomavri"},
+        "publisher": {"@type":"Organization","name":"Ξινόμαυρη",
+            "logo":{"@type":"ImageObject","url":base+"images/logo.png"}},
+        "inLanguage":"el",
+    }
+    if r.get('date'): blog["datePublished"]=r['date']; blog["dateModified"]=r['date']
+    if img: blog["image"]=[img]
+    graphs=[blog]
+    # Recipe schema for recipe posts that have ingredient (<ul>) + step (<ol>) lists
+    if r['category']=='recipes':
+        uls=re.findall(r'<ul>(.*?)</ul>', body_html, re.S)
+        ols=re.findall(r'<ol>(.*?)</ol>', body_html, re.S)
+        ingredients=[]
+        for u in uls: ingredients += [_strip(li) for li in re.findall(r'<li>(.*?)</li>', u, re.S)]
+        steps=[]
+        for o in ols: steps += [_strip(li) for li in re.findall(r'<li>(.*?)</li>', o, re.S)]
+        ingredients=[i for i in ingredients if i]; steps=[s for s in steps if s]
+        if ingredients:  # only claim a Recipe if we actually have ingredients
+            recipe={
+                "@context":"https://schema.org","@type":"Recipe",
+                "name": r['title'], "description": desc, "url": url,
+                "author":{"@type":"Person","name":"xinomavri"},
+                "inLanguage":"el","recipeIngredient": ingredients,
+            }
+            if r.get('date'): recipe["datePublished"]=r['date']
+            if img: recipe["image"]=[img]
+            if steps: recipe["recipeInstructions"]=[{"@type":"HowToStep","text":s} for s in steps]
+            graphs.append(recipe)
+    # breadcrumbs: Home > Category > Post
+    crumbs=[("Ξινόμαυρη",base),(CAT_LABEL.get(r['category'],r['category']),base+(f"{r['category']}.html")),(r['title'],url)]
+    graphs.append({
+        "@context":"https://schema.org","@type":"BreadcrumbList",
+        "itemListElement":[{"@type":"ListItem","position":i+1,"name":n,"item":u} for i,(n,u) in enumerate(crumbs)]
+    })
+    out=''
+    for g in graphs:
+        out+='<script type="application/ld+json">'+json.dumps(g,ensure_ascii=False)+'</script>\n'
+    return out
 
 # ---------- POST PAGES ----------
 built=0; missing=[]
@@ -272,6 +342,18 @@ for r in posts:
         return m.group(0)
     body_html = re.sub(r'<img\b[^>]*>', _dedup_img, body_html)
     body_html = re.sub(r'<figure>\s*</figure>', '', body_html)  # clean empties left behind
+    # add alt text + lazy-loading to body images that lack them (image SEO + a11y)
+    _imgn = [0]
+    def _enrich_img(m):
+        tag = m.group(0)
+        if 'alt=' not in tag:
+            _imgn[0]+=1
+            label = esc(r['title']) + (f' — εικόνα {_imgn[0]}' if _imgn[0]>1 else '')
+            tag = tag[:-1] + f' alt="{label}">'
+        if 'loading=' not in tag:
+            tag = tag[:-1] + ' loading="lazy">'
+        return tag
+    body_html = re.sub(r'<img\b[^>]*>', _enrich_img, body_html)
 
     hero = r.get('hero_local')
     hero_html = ''
@@ -280,7 +362,13 @@ for r in posts:
         hero_md5 = _md5(os.path.join(SITE,hero))
         if hero_md5 not in seen_md5:
             hero_html = f'<div class="arthero"><img src="{hero}" alt="{esc(r["title"])}"></div>'
-    h = head(f"{esc(r['title'])} — Ξινόμαυρη", (r.get('excerpt') or '')[:200], post_href(r['slug']))
+    # og/share image = hero if present else first body image
+    first_body_img = re.search(r'<img[^>]*src="(images/[^"]+)"', body_html)
+    og_image = (hero if (hero and os.path.exists(os.path.join(SITE,hero))) else
+                (first_body_img.group(1) if first_body_img else ''))
+    jsonld = _post_jsonld(r, og_image, body_html)
+    h = head(f"{esc(r['title'])} — Ξινόμαυρη", (r.get('excerpt') or '')[:200], post_href(r['slug']),
+             image=og_image, og_type='article', extra=jsonld)
     h += mast(r['category'] if r['category'] in CAT_LABEL else '')
     h += f"""<article><div class="wrap narrow">
   <div class="crumb">{CAT_LABEL.get(r['category'],r['category'])}</div>
